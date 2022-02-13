@@ -1,0 +1,38 @@
+.border{
+    width: 60px;
+    height: 80px;
+    background-color: black;
+    position: relative;
+    position: absolute;
+    right: 0;
+}
+.border:hover {
+   background-color: rgb(121, 37, 133);
+   color: white;
+}
+.left{
+    top: 30%;
+    left: 30%;
+}
+.right{
+    top: 45%;
+}
+.arrow {
+    position: absolute;
+  border: solid white;
+  border-width: 0 10px 10px 0;
+  display: inline-block;
+  padding: 10px;
+  right: 30%;
+  top: 30%;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}

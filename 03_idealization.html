@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Idealization</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\idealization\idealization.css">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\navbar.css">
+
+</head>
+<body>
+
+<div class="container-fluid">
+<!--    The Navigation Bar  -->
+
+<div class="row" id="navbar">
+    <div class="col-md-2"><a href="01_overview.html"><img id="start" src="images\navbar\start.jpg" alt="dummy.jpg"></a></div>
+    <div class="col-md-2"><a href="02_reality.html"><img id="img1" src="images\navbar\navbar01.jpg" alt="dummy.jpg"><div class="content" id="text1"></div></a></div>
+    <div class="col-md-2"><a href="#"><img id="selected" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
+    <div class="col-md-2"><a href="04_descretization.html"><img id="img3" src="images\navbar\navbar03.jpg" alt="dummy.jpg"><div class="content" id="text3"></div></a></div>
+    <div class="col-md-2"><a href="05_geometric.html"><img id="img4" src="images\navbar\navbar04.jpg" alt="dummy.jpg"><div class="content" id="text4"></div></a></div>
+    <div class="col-md-2"><a href="06_mathematical.html"><img id="img5" src="images\navbar\navbar05.jpg" alt="dummy.jpg"><div class="content" id="text5"></div></a></div>
+    
+    <!-- Progress Bar -->
+
+    <svg id="svgNav" width="100%" height="20px" viewBox="0 0 6 2">
+        <path id="navProgress" d="M -100 1.5 H -28" stroke-width="1"></path>
+    </svg>
+
+    <!-- Progress Bar(close) -->
+
+</div>
+
+<!--    The Navigation Bar(close)  -->
+<!--    Main Body  -->
+
+    <div class="row">
+    <!--    Left Hand Column -->
+
+        <div class="col-md-5 vh-100">
+        <!-- Explantion -->
+
+            <h1>Idealization</h1>
+            <ul>
+                <li>Strip away unnecessary details to focus on problem at hand.</li>
+                <li>Real life systems are complex systems, with lots factors at play simultaneosly, in such cases
+                we should extract the essential details by making rational approximatioms.</li>
+                <li>Our objective is then to discard all parameters one by one and reach a minimal model that best represent
+                the system.</li>
+                <li>Drag the slider to view the process of idealization</li>
+            </ul>
+
+        <!-- Explantion(close) -->
+
+        <!-- Slider -->
+
+            <div class="slidecontainer">
+                <input class="slider" type="range" min="0" max="100" value="0" autocomplete="off">
+            </div>
+
+        <!-- Slider(close) -->
+        </div>
+
+    <!--        Left Hand Column(close)  -->
+    
+    <!--        Right Hand Column  -->
+        
+    <div class="col-md-7 vh-100">
+        <!-- reality -->
+        <div id="reality"></div>
+        <!-- text -->
+        <!-- pipe -->
+        <!-- burner -->
+        <div id="burner"></div>
+        <!-- background -->
+        <div id="backGrnd"></div>
+        <!-- slider -->
+    </div>
+    <div class="row" id="idealize">
+        <div class="text">
+            <b><span>To see the individual parts of the system in action, lets discretize the rod !</span></b><br>
+                 <a href="04_descretization.html"
+                 class="btn btn-success" type="button">Lets discretize the rod</a>
+        </div>
+    </div>
+    </div>
+<!--    Main Body(close)  -->
+</div>
+
+</body>
+<script src="javascript\idealizationJS\idealization.js"></script>
+<script src="javascript\navbar.js"></script>
+</html>

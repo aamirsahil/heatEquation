@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Final</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="summary.css">
+
+</head>
+<body>
+<!--    The Navigation Bar  -->
+    <div class="row" style="position: relative; border-bottom: solid; border-color: #f5ce42; border-width: 20px; background-color: #f5ce42;">
+        <div class="col-md-1" style="position: relative;"><a href="01_overview.html"><img style="z-index:2; left: 0; top: 7px; position: absolute;height:60%; width:70%" src="images\navbar\start.png" alt="dummy.jpg"></a></div>
+        <div class="col-md-2"><a href="02_reality.html"><img id="img1" src="images\navbar\navbar01.jpg" alt="dummy.jpg"><div class="content" id="text1"></div></a></div>
+        <div class="col-md-2"><a href="03_idealization.html"><img id="img2" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
+        <div class="col-md-2"><a href="04_descretization.html"><img id="img3" src="images\navbar\navbar03.png" alt="dummy.jpg"><div class="content" id="text3"></div></a></div>
+        <div class="col-md-2"><a href="05_equilibrium.html"><img id="img4" src="images\navbar\navbar04.png" alt="dummy.jpg"><div class="content" id="text4"></div></a></div>
+        <div class="col-md-2"><a href="06_solution.html"><img id="img5" src="images\navbar\navbar05.png" alt="dummy.jpg"><div class="content" id="text5"></div></a></div>
+        <div class="col-md-1" style="position: relative;"><a href="#"><img style="outline: 6px solid #4f7eff; opacity: 100%; border-radius: 45%; z-index:2;right: 50%; top: 7px; position: absolute;height:60%; width:80%" src="images\navbar\finish.png" alt="dummy.jpg"></a></div>
+        <svg style="z-index: 1;top: 15px; position: absolute;" width="100%" height="20px" viewBox="0 0 6 2">
+            <path d="M -100 1.5 H 65" stroke="black" stroke-width="1" style="stroke-opacity: 70%;"></path>
+        </svg>
+    </div>
+<!--    The Navigation Bar(close)  -->
+    <div class="container-fluid vh-100" style="background-color: #f5ce42;">
+        <div id="summary"></div>
+        <div class="desc" id="text">We started with an real life example which we needed to model to obtain relation between relevant quantities.</div>
+        <input style="width: 75%; position: absolute; bottom: 40px; left: 200px;" type="range" min="0" max="100" value="0" class="slider" id="slider1" autocomplete="off">
+        <button style="width: 35%; position: absolute; bottom: 0; left: 530px;" type="button" class="btn btn-success" onclick="window.location='01_overview.html';">Go to Overview</button>
+    </div>
+</body>
+<script src="Javascript\navbar.js"></script>
+<script src="Javascript\summary.js"></script>
+</html>

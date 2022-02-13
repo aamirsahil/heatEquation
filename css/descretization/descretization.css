@@ -1,0 +1,63 @@
+.bigBall, .col-md-3, .bigBallText, #backGround,#zoomEffect{
+  visibility: hidden;
+}
+#zoomEffect{
+  opacity: 50%;
+}
+#img01 {
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 30%;
+  border: 8px solid #555;
+  z-index: 4;
+}
+#select {
+  top: 160px;
+  bottom: 0;
+  left: 92px;
+  width: 300%;
+  height: 10%;
+  position: absolute;
+  z-index: 2;
+  opacity: 25%;
+}
+#container {
+  width: 170px;
+  height: 500px;
+  position: relative;
+}
+li{
+  margin: 0 0 10px 0;
+}
+#leftMain{
+  font-size:1.5rem;
+  background-color: aliceblue;;
+}
+#rightMain{
+  text-align: center; 
+}
+#system{
+  position: absolute;
+}
+#pointer{
+  z-index: 0; 
+  position: absolute;
+  top: 88%; 
+  left:-4%;
+}
+.slidercontainer{
+  position: absolute; 
+  bottom: 5%; 
+  z-index: 15; 
+  width: 70%;
+  left: 40%;
+}
+#controls{
+  position: absolute;
+  top: 65%;
+  width: 300%;
+  left:50%;
+}

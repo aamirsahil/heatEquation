@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Descretization</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="math.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\navbar.css">
+    <link rel="stylesheet" href="css\descretization\descretization.css">
+
+
+</head>
+<body>
+
+<div class="container-fluid">
+<!--    The Navigation Bar  -->
+
+<div class="row" id="navbar">
+    <div class="col-md-2 navbar"><a href="01_overview.html"><img id="start" src="images\navbar\start.jpg" alt="dummy.jpg"></a></div>
+    <div class="col-md-2"><a href="02_reality.html"><img id="img1" src="images\navbar\navbar01.jpg" alt="dummy.jpg"><div class="content" id="text1"></div></a></div>
+    <div class="col-md-2"><a href="03_idealization.html"><img id="img2" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
+    <div class="col-md-2"><a href="#"><img id="selected" src="images\navbar\navbar03.jpg" alt="dummy.jpg"><div class="content" id="text3"></div></a></div>
+    <div class="col-md-2"><a href="05_geometric.html"><img id="img4" src="images\navbar\navbar04.jpg" alt="dummy.jpg"><div class="content" id="text4"></div></a></div>
+    <div class="col-md-2"><a href="06_mathematical.html"><img id="img5" src="images\navbar\navbar05.jpg" alt="dummy.jpg"><div class="content" id="text5"></div></a></div>
+    
+    <!-- Progress Bar -->
+
+    <svg id="svgNav" width="100%" height="20px" viewBox="0 0 6 2">
+        <path id="navProgress" d="M -100 1.5 H -4" stroke-width="1"></path>
+    </svg>
+
+    <!-- Progress Bar(close) -->
+
+</div>
+
+<!--    The Navigation Bar(close)  -->
+<!--    Main Body  -->
+    <div class="row">
+<!--    Description  -->
+        <div id="leftMain" class="col-md-5">
+            <h1>Descretization</h1>
+            <p>Descretization basically means to divide the space into smaller elements such that physics is same
+            in all the individual elements</p>
+            <ul>
+                <li id="point01">For starter we divide the space to descrete elements.</li>
+                <li id="point02">Each element have a constant P,V,T values and is thus a equilibrium system.</li>
+                <li id="point03">The boundary can exchange heat and mass.</li>
+                <li id="point04">But since each element is equilibrium, the net transfer is 0.</li>
+                <li id="point05">The model becomes closer to reality as the resolution of descretization sharpens</li>
+            </ul>
+
+            <div class="slidecontainer">
+                <input id="myRange" style="width: 60%;" type="range" min="1" max="100" value="0" class="slider" autocomplete="off">
+              </div>
+        </div>
+<!--        Description(close)  -->
+<!--        Descretizing  -->
+        <div id="rightMain" class="col-md-7 vh-100">
+            <div id="container">
+                <svg id="system" viewBox="0 0 800 600" width="370%" height="110%">
+                    <!-- background -->
+                    <path id="backGround" d="M 0 0 H 800 V 400 H 0 V 0" fill="black"/>
+                    <!-- selected balls -->
+                    <defs>
+                        <circle id="selectedball" cx="0" cy="0" r="100"/>
+                    </defs>
+                    <use xlink:href="#selectedball" class="bigBall" id="selectedball1" fill="white" x="150" y="200"/>
+                    <text id="temp1" x="150" y="200" class="bigBallText" text-anchor="middle" fill="black" font-size="100px" font-family="Arial" dy=".3em">T</text>
+                    <use xlink:href="#selectedball" class="bigBall" id="selectedball2" fill="white" x="400" y="200"/>
+                    <text id="temp2" x="400" y="200" class="bigBallText" text-anchor="middle" fill="black" font-size="100px" font-family="Arial" dy=".3em">T</text>
+                    <use xlink:href="#selectedball" class="bigBall" id="selectedball3" fill="white" x="650" y="200"/>
+                    <text id="temp3" x="650" y="200" class="bigBallText" text-anchor="middle" fill="black" font-size="100px" font-family="Arial" dy=".3em">T</text>
+                    <!-- Animated arrows -->
+                    <!-- balls -->
+                    <defs>
+                        <radialGradient id="smallBallcolor" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                          <stop offset="0%" style="stop-color:rgb(209, 208, 208);
+                          stop-opacity:1" />
+                          <stop offset="100%" style="stop-color:rgb(73, 73, 73);stop-opacity:1" />
+                        </radialGradient>
+                      </defs>
+                    <defs>
+                        <circle id="ball" cx="0" cy="0" r="35"/>
+                    </defs>
+                    <g transform = "translate(0,0)" class="balls">
+                        <use xlink:href="#ball" class="ball" fill="url(#smallBallcolor)" x="150" y="300"/>
+                        <use xlink:href="#ball" class="ball" fill="url(#smallBallcolor)" x="230" y="300"/>
+                        <use xlink:href="#ball" class="ball" fill="url(#smallBallcolor)" x="310" y="300"/>
+                        <use xlink:href="#ball" class="ball" fill="url(#smallBallcolor)" x="390" y="300"/>
+                        <use xlink:href="#ball" class="ball" fill="url(#smallBallcolor)" x="470" y="300"/>
+                        <use xlink:href="#ball" class="ball" fill="url(#smallBallcolor)" x="550" y="300"/>
+                        <use xlink:href="#ball" class="ball" fill="url(#smallBallcolor)" x="630" y="300"/>
+                    </g>
+                    <!-- balls(close) -->
+                    <!-- Dash line -->
+                    <!-- Button -->
+                    <!-- pipe -->
+                    <rect id="pipe" x="100" y="250" width="600" height="100" fill="white"/>
+                    <!-- pipe(close) -->
+                </svg>
+                <!-- Temp Controls -->
+                <!-- <div id="controls">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="temp1" class="form-label">Temperature1</label>
+                            <input type="range" class="form-range" id="slider1" value="50" min="0" max="255" step="1" autocomplete="off">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="temp2" class="form-label">Temperature2</label>
+                            <input type="range" class="form-range" id="slider2" value="50" min="0" max="255" step="1" autocomplete="off">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="temp3" class="form-label">Temperature3</label>
+                            <input type="range" class="form-range" id="slider3" value="50" min="0" max="255" step="1" autocomplete="off">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="matter" class="form-label">Conductivity</label>
+                            <input type="range" class="form-range" id="slider4" value="1" min="1" max="6" step="1" autocomplete="off">
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+<!--        Descretizing(close)  -->
+    </div>
+<!--    Main Body(close)  -->
+</div>
+
+</body>
+<script src="javascript\descretizationJS\descretization.js"></script>
+<script src="javascript\navbar.js"></script>
+</html>

@@ -1,0 +1,82 @@
+html {
+    border-color: #25302e;
+    border-width: 20px;
+    border-style: solid;
+  }
+.row{
+    padding-top: 3%; 
+    position: relative;
+}
+.title{
+    width: 20%; 
+    height: 20%; 
+    text-align:center; 
+    position: absolute; 
+    right: 5%; 
+    z-index: 5;
+}
+#startBtn{
+    width: 100%;
+}
+img{
+    border-radius: 30%;
+    height: 200px;
+    width: 200px;
+    box-shadow: -10px -10px 10px -1px black;
+}
+.centered{
+    text-align: center;
+}
+.col-md-2 {
+      position: relative;
+      position : absolute;  
+}
+
+.col-md-2 .content {
+    visibility: visible;
+    text-align: center;
+      position: absolute; /* Position the background text */
+      top: 50%; /* At the bottom. Use top:0 to append it to the top */
+      left: 5%;
+      background: rgb(0, 0, 0); /* Fallback color */
+      background: rgba(0, 0, 0, 0.75); /* Black background with 0.5 opacity */
+      color: #f1f1f1; /* Grey text */
+      width: 50%; /* Full width */
+      padding: 5px; /* Some padding */
+}
+h1 {
+    width: 100%;
+    padding-top: 70px;
+    font-size: 60px;
+    text-align:center;
+}
+#reality{
+    left: 20%; 
+    top: 300%;
+}
+#idealization{
+    
+    left: 30%; 
+    top: 480%;
+}
+#descretization{
+    left: 40%; 
+    top: 660%;
+}
+#geometric{
+    left: 50%; 
+    top: 840%;
+}
+#mathematical{
+    left: 60%; 
+    top: 1020%;
+}
+#arrowTop{
+    position: absolute;
+    top: 150%;
+}
+#arrowBottom{
+    position: absolute; 
+    top: 850%; 
+    right: 15%;
+}

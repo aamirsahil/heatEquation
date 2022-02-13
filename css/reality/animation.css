@@ -1,0 +1,21 @@
+@keyframes moveLeft {
+    from {left: 20px;}
+    to {left: -1450px;}
+  }
+@keyframes moveRight {
+    from {left: 20px;}
+    to {left: 1450px;}
+  }
+  @keyframes collapse {
+    from {opacity: 100%;}
+    to {opacity: 0%;}
+  }
+  @keyframes appear {
+    0% {opacity: 0%;}
+    80% {opacity: 0%;}
+    100% {opacity: 100%;}
+  }
+  @keyframes enlargeImage {
+    from {width: 90%; height: 35%; left: 20px;}
+    to {width: 160%; height: 60%; left: -250px;}
+  }

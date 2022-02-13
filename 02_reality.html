@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reality</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/reality/reality.css">
+    <link rel="stylesheet" href="css/reality/animation.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+<div class="container-fluid">
+<!-- ---------------------------------------------------------------------------------------------------------------------------------- -->
+<!--    The Navigation Bar  -->
+
+    <div class="row" id="navbar">
+        <div class="col-md-2"><a href="01_overview.html"><img id="start" src="images\navbar\start.jpg" alt="dummy.jpg"></a></div>
+        <div class="col-md-2"><a href="#"><img id="selected" src="images\navbar\navbar01.jpg" alt="dummy.jpg"><div class="content" id="text1"></div></a></div>
+        <div class="col-md-2"><a href="03_idealization.html"><img id="img2" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
+        <div class="col-md-2"><a href="04_descretization.html"><img id="img3" src="images\navbar\navbar03.jpg" alt="dummy.jpg"><div class="content" id="text3"></div></a></div>
+        <div class="col-md-2"><a href="05_geometric.html"><img id="img4" src="images\navbar\navbar04.jpg" alt="dummy.jpg"><div class="content" id="text4"></div></a></div>
+        <div class="col-md-2"><a href="06_mathematical.html"><img id="img5" src="images\navbar\navbar05.jpg" alt="dummy.jpg"><div class="content" id="text5"></div></a></div>
+        
+        <!-- Progress Bar -->
+
+        <svg id="svgNav" width="100%" height="20px" viewBox="0 0 6 2">
+            <path id="navProgress" d="M -100 1.5 H -53" stroke-width="1"></path>
+        </svg>
+
+        <!-- Progress Bar(close) -->
+
+    </div>
+
+<!--    The Navigation Bar(close)  -->
+<!-- ----------------------------------------------------------------------------------------------------------------------------------- -->
+    <!-- Reality Intro -->
+    <div class="row intro">
+        <div class="col-md-12">
+            <h1>Starting with Reality</h1><span class="descRealnMath">A person working with a hot object
+                 wants to know how long it takes for the temperature of the object to reach equilibrium once heated.</span>
+        </div>
+    </div>
+    <!-- Reality Intro(close) -->
+<!-- ----------------------------------------------------------------------------------------------------------------------------------- -->
+    <!-- Reality main -->
+
+    <div class="row main">
+        <div class="col-md-4 vh-100">
+            <img id="realImage" src="images/reality/reality.png"/>
+            <p>Take the case of this heated rod</p>
+        </div>
+        <div class="col-md-8 vh-100">
+            <!-- text -->
+            <!-- pipe -->
+            <!-- burner -->
+            <!-- switch -->
+            <!-- slider -->
+        </div>
+    </div>
+
+    <!-- Reality main(close) -->
+<!-- ----------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- Go to Idealization -->
+
+    <div class="row" id="idealize">
+        <div class="col-md-12">
+            <b><span class="descRealnMath">To mathematically model the progression of
+                temperature let us first idealise the system !</span></b>
+        </div>
+        <a href="03_idealization.html"
+        class="btn btn-success" type="button">Lets Idealize the system</a>
+    </div>
+
+<!-- Go to Idealization(close) -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------ -->
+</div>
+</body>
+
+<script src="javascript\navbar.js"></script>
+<script src="javascript\realityJS\reality.js"></script>
+</html>

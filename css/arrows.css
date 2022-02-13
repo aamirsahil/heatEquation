@@ -1,0 +1,48 @@
+.border{
+    width: 80px;
+    height: 60px;
+    background-color: black;
+    position: relative;
+    position: absolute;
+    right: 0;
+}
+.border:hover {
+   background-color: rgb(121, 37, 133);
+   color: white;
+}
+.top{
+    top: 30%;
+    opacity: 50%;
+}
+.bottom{
+    top: 45%;
+}
+.arrow {
+    position: absolute;
+  border: solid white;
+  border-width: 0 10px 10px 0;
+  display: inline-block;
+  padding: 10px;
+  right: 30%;
+  top: 30%;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.right {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.left {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
