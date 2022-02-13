@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Outline</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel = "stylesheet" href="derivation.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  
+<!--Mathjax-->  
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  
+<!--Bootstrap--> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 
+<style>
+#heading{
+    
+    text-align: center;
+    font-size: 45px;
+    
+    font: normal normal bold 32px/43px Nunito;
+    font-family: Nunito;
+}
+
+#subheading{
+    
+    text-align: center;
+    font-size: 20px;
+    
+    font: normal normal regular 22px Nunito;
+    font-family: Nunito;
+}
+
+#text{
+    position: relative;
+    text-align: left;
+    font-size: 16px;
+    font-family: Nunito;
+
+}
+
+#ptext{
+    height: 220px;
+     
+}
+
+#button{
+    align-self:flex-start;
+    width: 400px;
+    height:40px;
+    font-size: 15px;
+    font-family: Nunito;
+}
+
+#overflow{
+    background-color:#b3fff9;
+    zoom: 100%;
+}
+</style>
+</head>
+<body id="overflow">
+    <div class="container">
+
+        <div style="padding-top: 0%;" class="d-flex row">
+            <div class = "col-md-3"></div>
+            <div class="d-flex flex-column align-items-center justify-content-center col-md-6">
+            </br>
+                <text style="font-size: 23.1952px;  text-align:center;font-family: Nunito; font-weight: bold; color: rgb(145, 144, 144); text-decoration: blink;">Homi Bhabha Centre for Science Education</text>
+                <text style="font-size: 15.1952px; text-align: center; font-family: Nunito; font-weight: regular; color: rgb(145, 144, 144); text-decoration: blink;">TATA INSTITUTE OF FUNDAMENTAL RESEARCH</text>    
+            </br>
+            </div>
+            <div class = "d-flex flex-column justify-content-center align-items-center col-md-3">
+                <img src="tifr-logo-black.png" alt="Italian Trulli" width="120" height="60">
+            </div>
+        </div>
+
+        <div style="padding-top: 2%;" class="d-flex row">
+            <div class = "col-md-1"></div>
+            <div class="d-flex flex-column justify-content-left col-md-10">
+                </br>
+                <h1 id="heading">
+                    Derivations
+                </h1>
+                <h3 id="subheading"><i>
+                   Building a mathematical system that can 'act out' real world changes</i>
+                </h3>
+            </br>
+            </div>
+            <div class = "col-md-1"></div>
+        </div>
+        <div class="d-flex row">
+            <div class = "col-md-1"></div>
+            <div class="d-flex flex-column align-items-left col-md-10">
+                <p id="text">
+                    The process of derivation 'loads' real world activity into equations. 
+                    This loading process allows equations to 'act out' the changes in the world. The equation can thus be thought of as a symbol-based 'machine', which can mimic -- act out -- changes in
+                    the real world. </br></br>
+                    As the symbol-based system can act out changes in the world, it can be used to explore, and predict, the changes 
+                    in the real world. This  makes the symbol-based system very useful, as it allows building and exploring many 
+                    'what-if' scenarios, without making (costly) changes to the real world.</br></br>
+            
+              </i> </p>
+                    
+            </div>
+            <div class = "col-md-1"></div>
+        </div>
+        <div class="d-flex flex-row">
+            <div class = "col-md-1"></div>
+            <div class="d-flex flex-column align-items-center col-md-10" style="margin-left: 25%;">
+                <a href="01_overview.html" role="button" id ="button" class="btn btn-block btn-dark">
+                    Click to see how derivations build equations
+                </a>
+            </div>
+
+            <div class = "col-md-1"></div>
+        </div>
+        <div class = "d-flex flex-column"style="text-align: center;padding-top: 8%;">
+            <text  style="font-size: 15.8424px;">
+                <tspan  style="color: gray;">- designed by</tspan>
+            </text>
+            <text id="LSRlink" style="font-size: 10.8424px;">
+                <tspan  style="color: steelblue; font-size: 15.6267px; cursor: pointer; font-weight: normal; font-family: Nunito;"> Learning Sciences Research Group</tspan>
+            </text>
+            <text  style="font-size: 15.8424px;">
+                <tspan  style="color: gray; font-size: 15.6267px; cursor: pointer; font-weight: normal; font-family: Nunito;"> and</tspan>
+            </text>
+            <text  style="font-size: 10.8424px;">
+                <tspan  style="color: rgb(27, 27, 27); font-size: 15.6267px; font-weight: normal; font-family: Nunito;">Modeling & Conceptual Change Group\((MC^{2})\)</tspan>
+            </text>
+            
+
+        </div>
+    </div></body>
+
+    <script>
+        d3.select("#LSRlink").on("click",function(){
+            window.open("https://lsr.hbcse.tifr.res.in/","_blank" );
+        })
+    </script>
+</html>
