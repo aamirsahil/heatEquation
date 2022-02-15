@@ -1,0 +1,78 @@
+.slidecontainer{
+    position: absolute; 
+    bottom: 20%; 
+    z-index: 20; 
+    width: 100%; 
+    padding-top: 27px;
+}
+.col-md-5.vh-100{
+    background-color: aliceblue;
+}
+ul{
+    font-size: 1.3rem;
+}
+.slider{
+    z-index: 20; 
+    width: 40%;
+}
+.col-md-7{
+    position: relative; 
+    text-align: center; 
+}
+#idealExp{
+    font-size: 20px;
+}
+.system{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#reality{
+    background: url("../../images/idealization/idealization01.png") no-repeat;
+    top: 5%;
+    left: 13%;
+    z-index: 1;
+    outline: 2px solid #555;
+    width: 70%;
+    height: 70%;
+}
+
+#burner{
+    background: url("../../images/idealization/fireImage.gif") no-repeat;
+    top: 8%;
+    z-index: 0;
+    left: 1%;
+    width: 40%;
+    height: 60%;
+}
+#reality, #burner {
+    position: absolute;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  #idealize{
+    position: absolute;
+    text-align: center;
+    font-size: large;
+    width: 35%;
+    height: 25%;; 
+    border: solid; 
+    top: 350px;
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.75); /* Black background with 0.5 opacity */
+    color: #f1f1f1; /* Grey text */
+    padding: 5px;
+    box-shadow: 0px 0px 15px -1px black;
+    border-color: #83a5a2; 
+    border-width: 0px; 
+    left: 53%;
+    visibility: hidden;
+ }
+ .btn.btn-success{
+     left: 33%;
+    position: absolute;
+    bottom: 0%;
+ }

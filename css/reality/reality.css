@@ -14,12 +14,16 @@ p{
   height: 120%;
 }
 .col-md-4{
+  font-size: large;
   padding: 20px;
-  text-align: center;
   background-color: aliceblue;
 }
 .col-md-8{
+  height: 100%;
   background-color: #c7f1ff;
+  display: flex;
+  padding:40px;
+  justify-content: space-around;
 }
 #realImage{
   border: 8px solid #555;
@@ -27,11 +31,17 @@ p{
     width:300px;
     border-radius: 30%;
 }
+#realImage2{
+  border: 8px solid #555;
+   height: 300px;
+    width:300px;
+    border-radius: 30%;
+}
 .btn.btn-success{
   position: absolute; 
-  bottom: 1px; 
+  bottom: 10%; 
   width: 50%; 
-  left: 25%;
+  left: 42%;
 }
   #idealize{
      position: absolute;
@@ -54,7 +64,6 @@ p{
   .descRealnMath{
     font-size: 1.5rem;
   }
-
 
 
 
