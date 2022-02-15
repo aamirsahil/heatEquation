@@ -22,7 +22,7 @@
 <!--    The Navigation Bar  -->
 
     <div class="row" id="navbar">
-        <div class="col-md-2"><a href="01_overview.html"><img id="start" src="images\navbar\start.jpg" alt="dummy.jpg"></a></div>
+        <div class="col-md-2"><a href="01_overview.html"><img id="start" src="tifr-logo-black.png" alt="dummy.jpg"></a></div>
         <div class="col-md-2"><a href="#"><img id="selected" src="images\navbar\navbar01.jpg" alt="dummy.jpg"><div class="content" id="text1"></div></a></div>
         <div class="col-md-2"><a href="03_idealization.html"><img id="img2" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
         <div class="col-md-2"><a href="04_descretization.html"><img id="img3" src="images\navbar\navbar03.jpg" alt="dummy.jpg"><div class="content" id="text3"></div></a></div>
@@ -31,8 +31,8 @@
         
         <!-- Progress Bar -->
 
-        <svg id="svgNav" width="100%" height="20px" viewBox="0 0 6 2">
-            <path id="navProgress" d="M -100 1.5 H -53" stroke-width="1"></path>
+        <svg class="svgNav" width="100%" height="20px">
+            <path id="track" stroke-width="10"></path>
         </svg>
 
         <!-- Progress Bar(close) -->
@@ -40,50 +40,38 @@
     </div>
 
 <!--    The Navigation Bar(close)  -->
-<!-- ----------------------------------------------------------------------------------------------------------------------------------- -->
-    <!-- Reality Intro -->
-    <div class="row intro">
-        <div class="col-md-12">
-            <h1>Starting with Reality</h1><span class="descRealnMath">A person working with a hot object
-                 wants to know how long it takes for the temperature of the object to reach equilibrium once heated.</span>
-        </div>
-    </div>
-    <!-- Reality Intro(close) -->
-<!-- ----------------------------------------------------------------------------------------------------------------------------------- -->
     <!-- Reality main -->
 
     <div class="row main">
         <div class="col-md-4 vh-100">
-            <img id="realImage" src="images/reality/reality.png"/>
-            <p>Take the case of this heated rod</p>
+            <h1>Starting with reality</h1>
+            <ul>
+                <li>
+                    A blacksmith wants to know the variation of temperature in a metal rod kept in a furnace and then
+                    removed.
+                </li>
+                <li>
+                    A chef wants to know the variation of the temperature of a metallic spoon dipped in a hot curry
+                    curry and then removed.
+                </li>
+            </ul>
+            <p>In both cases above how long will it take before all the points in the objects attain same temperature
+                ?</p>
         </div>
         <div class="col-md-8 vh-100">
-            <!-- text -->
-            <!-- pipe -->
-            <!-- burner -->
-            <!-- switch -->
-            <!-- slider -->
+            <img id="realImage" src="images/reality/reality.png"/>
+            <img id="realImage2" src="images/reality/cooking.png"/>
         </div>
+        <a href="02_reality2.html"
+            class="btn btn-success" type="button">To answer these questions, let us mathematically model these systems !</a>
     </div>
 
     <!-- Reality main(close) -->
 <!-- ----------------------------------------------------------------------------------------------------------------------------------- -->
-<!-- Go to Idealization -->
 
-    <div class="row" id="idealize">
-        <div class="col-md-12">
-            <b><span class="descRealnMath">To mathematically model the progression of
-                temperature let us first idealise the system !</span></b>
-        </div>
-        <a href="03_idealization.html"
-        class="btn btn-success" type="button">Lets Idealize the system</a>
-    </div>
-
-<!-- Go to Idealization(close) -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------ -->
 </div>
 </body>
 
 <script src="javascript\navbar.js"></script>
-<script src="javascript\realityJS\reality.js"></script>
 </html>

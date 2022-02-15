@@ -6,13 +6,14 @@
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
     <script type="text/x-mathjax-config"> MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX","output/HTML-CSS"], tex2jax: { inlineMath: [["\\(","\\)"]] } }); </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css\style.css">
     <link rel="stylesheet" href="css\navbar.css">
-    <link rel="stylesheet" href="css\geometric\geometric.css">
+    <link rel="stylesheet" href="css\idealization\idealization2.css">
 
 </head>
 <body>
@@ -21,11 +22,11 @@
 <!--    The Navigation Bar  -->
 
 <div class="row" id="navbar">
-    <div class="col-md-2 navbar"><a href="01_overview.html"><img id="start" src="tifr-logo-black.png" alt="dummy.jpg"></a></div>
+    <div class="col-md-2"><a href="01_overview.html"><img id="start" src="tifr-logo-black.png" alt="dummy.jpg"></a></div>
     <div class="col-md-2"><a href="02_reality2.html"><img id="img1" src="images\navbar\navbar01.jpg" alt="dummy.jpg"><div class="content" id="text1"></div></a></div>
-    <div class="col-md-2"><a href="03_idealization2.html"><img id="img2" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
-    <div class="col-md-2"><a href="04_descretization.html"><img id="img3" src="images\navbar\navbar03.jpg" alt="dummy.jpg"><div class="content" id="text3"></div></a></div>
-    <div class="col-md-2"><a href="#"><img id="selected" src="images\navbar\navbar04.jpg" alt="dummy.jpg"><div class="content" id="text4"></div></a></div>
+    <div class="col-md-2"><a href="#"><img id="selected" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
+    <div class="col-md-2"><a href="04_descretization2.html"><img id="img3" src="images\navbar\navbar03.jpg" alt="dummy.jpg"><div class="content" id="text3"></div></a></div>
+    <div class="col-md-2"><a href="05_geometric.html"><img id="img4" src="images\navbar\navbar04.jpg" alt="dummy.jpg"><div class="content" id="text4"></div></a></div>
     <div class="col-md-2"><a href="06_mathematical.html"><img id="img5" src="images\navbar\navbar05.jpg" alt="dummy.jpg"><div class="content" id="text5"></div></a></div>
     
     <!-- Progress Bar -->
@@ -44,17 +45,17 @@
         <!-- Left -->
         <div id="exp" class="col-md-5 vh-100">
 <!--            Explanation  -->
-            <h1>The system on mathematical grid</h1>
+            <h1>Idealization</h1>
             <ul>
-                <li>The entire system is put in a 1D coordinate system(\(z\)), and vectors are introduced to represent forces.</li>
-                <li>Forces acting in this case are,(click on any pressure element in the picture),
+                <li>Here we strip away details we consider unnecessary to solving the problem at hand.</li>
+                <li><span class="dragCmd">Drag the slider to turn the schematic into 1D,</span>
                     <ul>
-                        <li>Force from pressure element on top,$$ F_1 = P_{i+1} \times A $$</li>
-                        <li>Weight of the pressure element,$$ F_2 = \rho Agdz $$</li>
-                        <li>Force from pressure element below,$$ F_3 = P_{i} \times A $$</li>
+                        <li id="point1">Here we idealise the metallic rod and consider it to be one dimensional.</li>
+                        <li id="point2">The variation of temperature at different in the rod is shown graphically</li>
                     </ul>
                 </li>
-                <li>Here \(A\) is the cross-section area of the pressure element and \(dz\) it's thickness</li>
+                <li id="point3">As we intuitively know, with time heat transfer happens from region of higher temperature to lower
+                    temperature. Eventually thermal equilibrium is attained and all points reach same temperature.</li>
             </ul>
 <!-- Explanation(close) -->
             <p id="time"></p>
@@ -74,6 +75,6 @@
 </div>
 
 </body>
-<script src="javascript\geometricJS\geometric.js"></script>
+<script src="javascript\idealizationJS\idealization2.js"></script>
 <script src="javascript\navbar.js"></script>
 </html>
