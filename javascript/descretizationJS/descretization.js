@@ -1,3 +1,12 @@
+//creating small balls
+for(let i=0; i<50;i++){
+    let x = 120 + i*(25);//x and y are the center of circle
+    if(x>(800-10)) break;
+    d3.select(".balls").append("use")
+    .attr("href", "#ball").attr("class", "ball").attr("fill","url(#smallBallcolor)")
+    .attr("x", x).attr("y", 260);
+}
+
 class SVG{
     constructor(){
         this.pipe = d3.select("#pipe");
@@ -46,9 +55,9 @@ SVG.prototype.setBallColor = function(i){
 }
 //shrink pipe width on slider movement
 SVG.prototype.shrinkPipe = function(len){
-    len = 600*len;
+    len = 700*len;
     this.pipe.attr("x", 100 + len);
-    this.pipe.attr("width", 600 - len);
+    this.pipe.attr("width", 700 - len);
 }
 //change color of 3 adjacent balls
 SVG.prototype.changeColor = function(len,i){
