@@ -46,6 +46,7 @@
     position: absolute;
     height:80px;
     width:80px;
+    opacity: 25%;
 }
 #selected{
     top:-15px;
