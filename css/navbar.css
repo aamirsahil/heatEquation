@@ -22,20 +22,21 @@
       background: rgb(0, 0, 0); /* Fallback color */
       background: rgba(0, 0, 0, 0.75); /* Black background with 0.5 opacity */
       color: #f1f1f1; /* Grey text */
-      width: 50%; /* Full width */
+      width: 125px; /* Full width */
       height: 50%;
       padding: 8px; /* Some padding */
 }
 #navbar{
     position:relative; 
     border: solid; 
-    border-color: #384946; 
+    border-color: #e8eefa; 
     border-width: 30px; 
-    background-color: #384946;
+    background-color: #e8eefa;
 }
-#svgNav{
+.svgNav{
     z-index: 1;
     top: 15px; 
+    opacity: 50%;
     position: absolute;
 }
 #start{
@@ -43,8 +44,8 @@
     left: 0; 
     top: 0px; 
     position: absolute;
-    height:100%; 
-    width:40%
+    height:80px;
+    width:80px;
 }
 #selected{
     top:-15px;
@@ -57,3 +58,47 @@
     outline: 6px solid #4f7eff; 
     opacity: 100%;
 }
+.content:hover{
+    background: #e74c3c;
+  }
+  .btnNav{
+      position: absolute;
+      top: 0px;
+      background-color: #555;
+    border-radius: 50%;
+    z-index: 20;
+  }
+  #nextBtn{
+      left:93%;
+      height: 50px;
+      width: 50px;
+  }
+  #prevBtn{
+      left:11%;
+      height: 50px;
+      width: 50px;
+  }
+  .btnNav:hover{
+    background-color: green;
+  }
+  .arrow {
+    position: absolute;
+    border: solid white;
+    border-width: 0 10px 10px 0;
+    display: inline-block;
+    padding: 10px;
+    right: 30%;
+    top: 30%;
+    }
+    .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    top: 20%;
+    right: 25%;
+    }
+    .left {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        top: 20%;
+        left: 25%;
+    } 

@@ -1,0 +1,14 @@
+#der{
+    font-size: .9rem;
+    padding: 20px;
+    background-color: aliceblue;
+  }
+#exp{
+    font-size: large;
+    padding: 20px;
+    background-color: #e8eefa;
+    visibility: hidden;
+  }
+  .expand{
+    background-color: bisque;
+  }

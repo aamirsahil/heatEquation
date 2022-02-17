@@ -23,3 +23,10 @@ li{
     color: rgb(73, 7, 134);
     text-align: center;
   }
+#equation{
+    z-index: 101;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    font-size: 1.4rem;
+}

@@ -33,8 +33,8 @@ li{
   margin: 0 0 10px 0;
 }
 #leftMain{
-  font-size:1.5rem;
-  background-color: aliceblue;;
+  font-size:1.3rem;
+  background-color: aliceblue;
 }
 #rightMain{
   text-align: center; 
@@ -48,16 +48,17 @@ li{
   top: 88%; 
   left:-4%;
 }
-.slidercontainer{
-  position: absolute; 
-  bottom: 5%; 
+#myRange{
   z-index: 15; 
-  width: 70%;
-  left: 40%;
+  width: 100%;
 }
 #controls{
   position: absolute;
   top: 65%;
   width: 300%;
   left:50%;
+}
+.instruct{
+  color: rgb(73, 7, 134);
+  text-align: center;
 }
