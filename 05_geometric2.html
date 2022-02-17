@@ -25,7 +25,7 @@
     <div class="col-md-2"><a href="02_reality.html"><img id="img1" src="images\navbar\navbar01.jpg" alt="dummy.jpg"><div class="content" id="text1"></div></a></div>
     <div class="col-md-2"><a href="03_idealization.html"><img id="img2" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
     <div class="col-md-2"><a href="04_descretization.html"><img id="img3" src="images\navbar\navbar03.jpg" alt="dummy.jpg"><div class="content" id="text3"></div></a></div>
-    <div class="col-md-2"><a href="05_geometric.html"><img id="selected" src="images\navbar\navbar04.jpg" alt="dummy.jpg"><div class="content" id="text4"></div></a></div>
+    <div class="col-md-2"><a href="05_geometric2.html"><img id="selected" src="images\navbar\navbar04.jpg" alt="dummy.jpg"><div class="content" id="text4"></div></a></div>
     <div class="col-md-2"><a href="06_mathematical.html"><img id="img5" src="images\navbar\navbar05.jpg" alt="dummy.jpg"><div class="content" id="text5"></div></a></div>
     
     <!-- Progress Bar -->
@@ -53,17 +53,19 @@
         <!-- Left -->
         <div id="exp" class="col-md-5 vh-100">
 <!--            Explanation  -->
-            <h1>The system is on a mathematical grid !</h1>
+            <h1>Let us put the system on a mathematical grid !</h1>
             <ul>
-                <li>We place the discretised rod on the \(x\) axis and zoom in on the graph.</li>
+                <li>We place the discretised rod in a coordinate system.</li>
+                <li>The position of a mass point is denoted by \(x\) and its temperature by \(T\).</li>
                 <li>Position and temperature of its neighbouring points at time \(t\) are denoted by \(T (x + dx, t)\) and \(T (x -
                     dx, t)\)</li>
                 <li>The variation of temperature \(T\) of a mass point at \(x\) with time \(t\) is proportional to the difference in temperature
                     with its neighbouring points,$$ T(x + dx, t) - T(x, t) \text{ and } T(x - dx, t) - T(x, t) $$</li>
             </ul>
+            $$ (\frac{\partial T}{\partial t})_{t=t_{i}} \propto [T(x_{i} + dx, t_{i}) - T(x_{i}, t_{i})] + [T(x_{i} - dx, t_{i}) - T(x_{i}, t_{i})] $$
             <div class="instruct">Drag slider to see variation in Temperature, \(T\), with time, \(t\)!</div>
             <div class="slidecontainer">
-                <input class="slider" type="range" min="0" max=".4" value="0" step=".02" autocomplete="off">
+                <input class="slider" type="range" min="0" max=".4" value="0" step=".005" autocomplete="off">
             </div>
 <!-- Explanation(close) -->
         </div>
@@ -73,10 +75,6 @@
             <!-- graph -->
             <svg id="Graph"></svg>
             <!-- pipe -->
-            <div id="equation">
-                <span class="instruct">Click on the mass points to see temperature diffence between near by points.</span><br>
-                \( (\frac{\partial T}{\partial t})_{t=t_{i}} \propto [T(x_{i} + dx, t_{i}) - T(x_{i}, t_{i})] + [T(x_{i} - dx, t_{i}) - T(x_{i}, t_{i})] \)
-            </div>
         </div>
         <!-- Right(close) -->
     </div>
