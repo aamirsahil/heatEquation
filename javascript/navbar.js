@@ -12,7 +12,6 @@ window.addEventListener("load", ()=>{
         "/03_idealization.html",
         "/03_idealization2.html",
         "/04_descretization.html",
-        "/05_geometric.html",
         "/05_geometric2.html",
         "/06_mathematical.html",
     ];
@@ -31,10 +30,9 @@ window.addEventListener("load", ()=>{
             i=2;
             break;
         case link[4]:
-        case link[5]:
             i=3;
             break;
-        case link[6]:
+        case link[5]:
             i=4;
             break;
     }
@@ -54,15 +52,12 @@ var link = [
     "/heatEquation/03_idealization.html",
     "/heatEquation/03_idealization2.html",
     "/heatEquation/04_descretization.html",
-    "/heatEquation/05_geometric.html",
     "/heatEquation/05_geometric2.html",
     "/heatEquation/06_mathematical.html",
     "/heatEquation/07_summary.html"
 ];
 var loc = window.location.pathname;
 var linkIndex = link.indexOf(loc);
-console.log(loc);
-console.log(linkIndex);
 d3.select("#nextBtn").on("mousedown", ()=>{
     window.location = link[linkIndex+1];
 });
