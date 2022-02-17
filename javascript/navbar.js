@@ -59,7 +59,7 @@ var link = [
     "/heatEquation/06_mathematical.html",
     "/heatEquation/07_summary.html"
 ];
-var loc = window.location.pathname.replace("/heatEquation", "");
+var loc = window.location.pathname;
 var linkIndex = link.indexOf(loc);
 d3.select("#nextBtn").on("mousedown", ()=>{
     window.location = link[linkIndex+1];
