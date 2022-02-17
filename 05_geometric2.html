@@ -61,7 +61,7 @@
                 <li>The variation of temperature \(T\) of a mass point at \(x\) with time \(t\) is proportional to the difference in temperature
                     with its neighbouring points,$$ T(x + dx, t) - T(x, t) \text{ and } T(x - dx, t) - T(x, t) $$</li>
             </ul>
-            <div class="instruct">Drag the slider on the right to see variation in Temperature, \(T\), with position, \(x\)!</div>
+            <div class="instruct">Drag slider to see variation in Temperature, \(T\), with time, \(t\)!</div>
             <div class="slidecontainer">
                 <input class="slider" type="range" min="0" max=".4" value="0" step=".02" autocomplete="off">
             </div>
@@ -74,6 +74,7 @@
             <svg id="Graph"></svg>
             <!-- pipe -->
             <div id="equation">
+                <span class="instruct">Click on the mass points to see temperature diffence between near by points.</span><br>
                 \( (\frac{\partial T}{\partial t})_{t=t_{i}} \propto [T(x_{i} + dx, t_{i}) - T(x_{i}, t_{i})] + [T(x_{i} - dx, t_{i}) - T(x_{i}, t_{i})] \)
             </div>
         </div>
