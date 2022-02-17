@@ -61,6 +61,8 @@ var link = [
 ];
 var loc = window.location.pathname;
 var linkIndex = link.indexOf(loc);
+console.log(loc);
+console.log(linkIndex);
 d3.select("#nextBtn").on("mousedown", ()=>{
     window.location = link[linkIndex+1];
 });
