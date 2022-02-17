@@ -84,3 +84,6 @@ ul{
      position: absolute;
      bottom: 20px;
  }
+ #point1,#point2{
+    visibility: hidden;
+}
