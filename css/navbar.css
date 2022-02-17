@@ -64,28 +64,28 @@
   }
   .btnNav{
       position: absolute;
-      top: 0px;
+      top: 730%;
       background-color: #555;
     border-radius: 30%;
     z-index: 20;
   }
   #nextBtn{
-      left:93%;
+      left:99%;
       height: 50px;
       width: 50px;
   }
   #prevBtn{
-      left:11%;
+      left:95%;
       height: 50px;
       width: 50px;
   }
   .btnNav:hover{
-    background-color: green;
+    background-color: rgb(9, 194, 9);
   }
   .arrow {
     position: absolute;
     border: solid white;
-    border-width: 0 10px 10px 0;
+    border-width: 0 5px 5px 0;
     display: inline-block;
     padding: 10px;
     right: 30%;
@@ -94,12 +94,12 @@
     .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
-    top: 20%;
-    right: 25%;
+    top: 25%;
+    right: 35%;
     }
     .left {
         transform: rotate(135deg);
         -webkit-transform: rotate(135deg);
-        top: 20%;
-        left: 25%;
+        top: 25%;
+        left: 35%;
     } 
