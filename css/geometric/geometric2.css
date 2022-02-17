@@ -22,6 +22,7 @@ li{
 .instruct{
     color: rgb(73, 7, 134);
     text-align: center;
+    font-size: .9em;
   }
 #equation{
     z-index: 101;
