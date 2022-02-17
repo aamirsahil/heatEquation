@@ -49,15 +49,15 @@ window.addEventListener("load", ()=>{
     d3.select("#track").attr("d", "M " +  xStart + " 15 H " + xEnd);
 });
 var link = [
-    "/01_overview.html",
-    "/02_reality.html",
-    "/03_idealization.html",
-    "/03_idealization2.html",
-    "/04_descretization.html",
-    "/05_geometric.html",
-    "/05_geometric2.html",
-    "/06_mathematical.html",
-    "/07_summary.html"
+    "/heatEquation/01_overview.html",
+    "/heatEquation/02_reality.html",
+    "/heatEquation/03_idealization.html",
+    "/heatEquation/03_idealization2.html",
+    "/heatEquation/04_descretization.html",
+    "/heatEquation/05_geometric.html",
+    "/heatEquation/05_geometric2.html",
+    "/heatEquation/06_mathematical.html",
+    "/heatEquation/07_summary.html"
 ];
 var loc = window.location.pathname.replace("/heatEquation", "");
 var linkIndex = link.indexOf(loc);
