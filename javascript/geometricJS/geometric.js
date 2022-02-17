@@ -65,6 +65,17 @@ canvas.append("g")
         .attr("transform","translate(" + graphXOffset +"," + (canvasHeight/4+graphYOffset) + ")")
         .attr("class", "xAxis")
         .call(axisX);
+canvas.append("text")
+        .attr("text-anchor", "end")
+        .attr("x", canvasWidth - graphOffeset/2)
+        .attr("y", (canvasHeight/4+graphYOffset) - 10)
+        .text("Position");
+canvas.append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", graphXOffset/2)
+    .attr("x", -graphYOffset)
+    .text("Temperature");
 
 //convert a set of d to correspondig set (x,y)
 var line = d3.line()
@@ -81,13 +92,13 @@ var plot = canvas.append("g")
             .attr("d",line)
             .attr("fill","none")
             .attr("stroke", "red")
-            .attr("stroke-width", 5);
+            .attr("stroke-width", 2);
 
 // pipe
 var pipeLength = canvasWidth/1.3;
-var pipeHeight = canvasHeight/6;
+var pipeHeight = 5;
 var pipeXPos = 80;
-var pipeYPos = (canvasHeight/2+100);
+var pipeYPos = (canvasHeight/2+150);
 //pipe color
 var silverColor = "rgb(138,138,138)";
 var silverColorCenter = "rgb(237,237,237)";
@@ -132,7 +143,15 @@ var slider = canvas.append("g")
                 .attr("fill", "steelblue");
 //place it under the pipe
 slider.attr("transform", "translate(" + pipeXPos + "," + (pipeYPos + pipeHeight) + ")");
-
+//message
+canvas.append("g")
+            .attr("transform", "translate(" + (pipeXPos+40) + "," + (pipeYPos+xSilderHeight+40) + ")")
+            .append("text")
+            .attr("x", 0)
+            .attr("y", 0)
+            .text("Drag this slider to see variation in Temperature, T, with position, x!")
+            .style("fill","rgb(73, 7, 134)")
+            .style("font-size","1.2rem");
 //line(dashed)
 var index = 0;
 var dataLine = canvas.append("g")
@@ -190,8 +209,26 @@ var dataTextTemp = canvas.append("g")
                 .attr("dy", ".35em")
                 .text("T: " + data[index].y.toFixed(2))
                 .style("fill", "white");
+//time data text
+var timeTextBckGndWidth = 100;
+var timeTextBckGndHeight = 30;
+var timeTextBackGround = canvas.append("g")
+                .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
+                .append("rect")
+                .attr("x", widthScale(1.75))
+                .attr("y", heightScale(2.5))
+                .attr("width", timeTextBckGndWidth)
+                .attr("height", timeTextBckGndHeight)
+                .attr("fill", "black");
 
-
+var dataTextTime = canvas.append("g")
+                .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
+                .append("text")
+                .attr("x", widthScale(1.8))
+                .attr("y", heightScale(2.2))
+                .attr("dy", ".35em")
+                .text("t: " + d3.select(".slider").property("value") + "s")
+                .style("fill", "white");
 //slider drag event
 var bisect = d3.bisector(d => d).left;
 var sliderPosToGraph = d3.scaleLinear()
@@ -200,7 +237,7 @@ var sliderPosToGraph = d3.scaleLinear()
 var dragHandler = d3.drag()
     .on("drag", function (event) {
         d3.select(this)
-            .attr("transform", "translate(" + (event.x >= 80? ((event.x <= pipeXPos+pipeLength)?
+            .attr("transform", "translate(" + (event.x >= pipeXPos? ((event.x <= pipeXPos+pipeLength)?
              event.x : pipeXPos+pipeLength): pipeXPos) +
              "," + (pipeYPos + pipeHeight) + ")");
         //move the line
@@ -243,7 +280,9 @@ d3.select(".slider").on("input", () =>{
     //move the pointer
     dataPointer.attr("cx", widthScale(data[index].x))
             .attr("cy", heightScale(data[index].y));
+        console.log(time);
     //move the text
+    dataTextTime.text("t: " + time + "s");
     textBackGround.attr("x", widthScale(data[index].x))
             .attr("y", heightScale(data[index].y));
     dataTextPos.attr("x", widthScale(data[index].x))

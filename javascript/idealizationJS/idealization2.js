@@ -67,7 +67,7 @@ var plot = canvas.append("g")
             .attr("d",line)
             .attr("fill","none")
             .attr("stroke", "red")
-            .attr("stroke-width", 5)
+            .attr("stroke-width", 2)
             .style("opacity", "0%");
 
 // pipe

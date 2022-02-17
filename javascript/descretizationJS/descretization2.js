@@ -6,24 +6,6 @@ for(let i=0; i<50;i++){
     .attr("href", "#ball").attr("class", "ball").attr("fill","url(#smallBallcolor)")
     .attr("x", x).attr("y", 260);
 }
-//create discreate line
-d3.select("#system").append("line").attr("id","dis01")
-    .attr("x1",320).attr("y1",220).attr("x2",320).attr("y2",300)
-    .attr("stroke","black").attr("stroke-dasharray",4)
-    .attr("stroke-width",3).style("visibility","hidden").attr("class", "dicreteLine");
-
-d3.select("#system").append("line").attr("id","dis02")
-    .attr("x1",345).attr("y1",220).attr("x2",345).attr("y2",300)
-    .attr("stroke","black").attr("stroke-dasharray",4)
-    .attr("stroke-width",3).style("visibility","hidden").attr("class", "dicreteLine");
-
-d3.select("#system")
-        .append("text").attr("id","dis03")
-        .style("font-size", "1.4rem")
-        .attr("x",320).attr("y",300)
-        .attr("dy", ".35em")
-        .text("dx")
-        .style("fill", "black").style("visibility","hidden").attr("class", "dicreteLine");
 
 class SVG{
     constructor(){
@@ -163,38 +145,11 @@ for(let i=0; i<3; i++){
         .attr("class", "tempSlider").style("visibility","hidden")
         .attr("transform", "translate(" + (75 + i*(sliderWidth + sliderSpace)) + ",50)")
         .call(sliders[i]);
-    let tempText = "";
-    switch (i){
-        case 0:
-            tempText = "T(x - dx)";
-            break;
-        case 1:
-            tempText = "T(x)";
-            break;
-        case 2:
-            tempText = "T(x + dx)";
-    }
-    d3.select("#system").append("g")
-        .attr("class", "temp").style("visibility","hidden")
-        .attr("transform", "translate(" + (105 + i*(sliderWidth + sliderSpace)) + ",20)")
-        .append("text")
-        .style("font-size", "1.8rem")
-        .attr("dy", ".35em")
-        .text(tempText)
-        .style("fill", "black");
 }
 d3.select("#system").append("g")
     .attr("class", "conSlider").style("visibility","hidden")
     .attr("transform", "translate(300,350)")
     .call(slider4);
-d3.select("#system").append("g")
-        .attr("class", "temp").style("visibility","hidden")
-        .attr("transform", "translate(360,330)")
-        .append("text")
-        .style("font-size", "1.8rem")
-        .attr("dy", ".35em")
-        .text("k")
-        .style("fill", "black");
 // d3.select("#system").append("g").attr("class","slider")
 //     .attr("id", "slider1")
 //     .attr("transform", "translate(75,50)")
@@ -217,10 +172,6 @@ d3.selectAll(".ball").on("mousedown", function() {
         clicked = true;
         d3.select(this).attr("stroke", "black").attr("stroke-width", "5px");
         d3.select(".balls").transition().attr("transform","translate(0,300)");
-        d3.selectAll(".dicreteLine").transition().attr("transform","translate(0,300)");
-        d3.select("#dis01").attr("x1",xPosBall).attr("x2",xPosBall);
-        d3.select("#dis02").attr("x1",xPosBall+25).attr("x2",xPosBall+25);
-        d3.select("#dis03").attr("x",xPosBall);
         createZoomEffect(zoomPath);
         makeVisible();
         turnSliderOff();
@@ -238,14 +189,15 @@ function createZoomEffect(zoomPath){
             .append("path")
             .attr("id", "zoomEffect")
             .attr("d",line)
-            .attr("fill","url(#MyGradient2)");
+            .attr("fill","black")
+            .attr("stroke", "black")
+            .attr("stroke-width", 5);
 }
 
 function makeVisible(){
     d3.selectAll(".bigBall").transition().delay(500).style("visibility", "visible");
     d3.selectAll(".bigBallText").transition().delay(500).style("visibility", "visible");
     d3.selectAll(".tempSlider").transition().delay(500).style("visibility", "visible");
-    d3.selectAll(".temp").transition().delay(500).style("visibility", "visible");
     d3.selectAll(".conSlider").transition().delay(500).style("visibility", "visible");
     d3.select("#backGround").transition().delay(500).style("visibility", "visible");
     d3.select("#zoomEffect").transition().delay(500).style("visibility", "visible");
@@ -261,11 +213,7 @@ d3.select("#myRange").on("input", function(){
     let length = value/(max - min);
 
     svg.shrinkPipe(length);
-    (length >= 0.35)?d3.selectAll(".dicreteLine").
-        style("visibility","visible"):
-        d3.selectAll(".dicreteLine").
-        style("visibility","hidden");
-
+    console.log(length);
     (length >= 1.0)?d3.select(".instruct").
         html("Click on a mass point to know more !"):
         d3.select(".instruct").
