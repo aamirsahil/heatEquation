@@ -1,13 +1,17 @@
 //To calculate the profile of the graph
 function u(x,t){
-        return Math.exp(-Math.pow(Math.PI, 2)*t)*Math.sin(Math.PI*x) +
+        return 25*(Math.exp(-Math.pow(Math.PI, 2)*t)*Math.sin(Math.PI*x) +
                 Math.exp(-Math.pow(2*Math.PI, 2)*t)*Math.sin(2*Math.PI*x) +
-                Math.exp(-Math.pow(3*Math.PI, 2)*t)*Math.sin(3*Math.PI*x);
+                Math.exp(-Math.pow(3*Math.PI, 2)*t)*Math.sin(3*Math.PI*x))+20;
     }
 function getXtranslatePos(ogString){
-    let newString = (ogString.replace("translate(", "")).replace(")", "");
-    return newString.split(",")[0];
-}
+        let newString = (ogString.replace("translate(", "")).replace(")", "");
+        return newString.split(",")[0];
+    }
+function getYtranslatePos(string){
+        let newString = (ogString.replace("translate(", "")).replace(")", "");
+        return newString.split(",")[1];
+    }
 // function getYtranslatePos(ogString){
 //     let newString = (ogString.replace("translate(", "")).replace(")", "");
 //     return newString.split(",")[1];
@@ -33,7 +37,7 @@ var widthScale = d3.scaleLinear()
                     .range([0, canvasWidth - graphOffeset]);
 
 var heightScale = d3.scaleLinear()
-                    .domain([d3.min(y),d3.max(y)])
+                    .domain([0,d3.max(y)])
                     .range([canvasHeight/2,0]);
 //graph
 var graphXOffset = 40;
@@ -66,13 +70,13 @@ canvas.append("text")
         .attr("text-anchor", "end")
         .attr("x", canvasWidth - graphOffeset/2)
         .attr("y", (canvasHeight/2+graphYOffset+40) - 10)
-        .text("Position");
+        .text("Position(m)");
 canvas.append("text")
     .attr("text-anchor", "end")
     .attr("transform", "rotate(-90)")
-    .attr("y", graphXOffset/2)
+    .attr("y", graphXOffset/2 - 5)
     .attr("x", -graphYOffset-40)
-    .text("Temperature");
+    .text("Temperature(C)");
 
 //convert a set of d to correspondig set (x,y)
 var line = d3.line()
@@ -93,53 +97,60 @@ var plot = canvas.append("g")
 
 // pipe
 var pipeLength = canvasWidth/1.3;
-var pipeHeight = 20;
+var pipeHeight = 10;
 var pipeXPos = 80;
-var pipeYPos = (canvasHeight/2+150);
-//pipe color
-// var silverColor = "rgb(138,138,138)";
-// var silverColorCenter = "rgb(237,237,237)";
-// var pipeGradient = canvas.append("defs").append("linearGradient")
-//             .attr("id", "pipeGradient")
-//             .attr("x1", "0%").attr("y1", "0%").attr("x2", "0%").attr("y2", "100%");
-// pipeGradient.append("stop")
-//         .attr("offset", "0%").style("stop-color", silverColor).style("stop-opacity", "1")
-// pipeGradient.append("stop")
-//         .attr("offset", "50%").style("stop-color", silverColorCenter).style("stop-opacity", "1");
-// pipeGradient.append("stop")
-//         .attr("offset", "100%").style("stop-color", silverColor).style("stop-opacity", "1");
-//create the pipe
-// var pipe = canvas.append("g")
-//             .attr("transform", "translate(" + pipeXPos + "," + pipeYPos + ")")
-//             .append("rect")
-//             .attr("width", pipeLength)
-//             .attr("height", pipeHeight)
-//             .attr("fill", "url(#pipeGradient)");
-
+var pipeYPos = (canvasHeight/2+200);
+// pipe color
+var silverColor = "rgb(138,138,138)";
+var silverColorCenter = "rgb(237,237,237)";
+var pipeGradient = canvas.append("defs").append("linearGradient")
+            .attr("id", "pipeGradient")
+            .attr("x1", "0%").attr("y1", "0%").attr("x2", "0%").attr("y2", "100%");
+pipeGradient.append("stop")
+        .attr("offset", "0%").style("stop-color", silverColor).style("stop-opacity", "1")
+pipeGradient.append("stop")
+        .attr("offset", "50%").style("stop-color", silverColorCenter).style("stop-opacity", "1");
+pipeGradient.append("stop")
+        .attr("offset", "100%").style("stop-color", silverColor).style("stop-opacity", "1");
+// create the pipe
+var pipe = canvas.append("g")
+            .attr("transform", "translate(" + pipeXPos + "," + pipeYPos + ")")
+            .append("rect")
+            .attr("width", pipeLength)
+            .attr("height", pipeHeight)
+            .attr("fill", "url(#pipeGradient)");
+//drag prompt
+var dragTextTime = canvas.append("g")
+            .attr("transform","translate(" + pipeXPos + "," + (pipeYPos-40) + ")")
+            .append("text")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("dy", ".35em")
+            .text("Drag slider to select different x.")
+            .style("fill", "rgb(73, 7, 134)").style("font-size","1.1rem");
 // X Slider(triangular pointer)
-// var drawSlider = d3.line()
-//             .x( d => d.x)
-//             .y( d => d.y);
+var drawSlider = d3.line()
+            .x( d => d.x)
+            .y( d => d.y);
 
-// var xSilderHeight = 40;
-// var xSliderLength = 40;
-// var xSliderData = [
-//     {x:-xSliderLength/2, y:xSilderHeight},
-//     {x:xSliderLength/2, y:xSilderHeight},
-//     {x:0, y:0}
-// ];
-//create the slider
-// var slider = canvas.append("g")
-//                 .selectAll(".xSlider")
-//                 .data([xSliderData])
-//                 .enter()
-//                 .append("path")
-//                 .attr("class", "xSlider")
-//                 .style("cursor", "w-resize")
-//                 .attr("d",drawSlider)
-//                 .attr("fill", "steelblue");
-//place it under the pipe
-// slider.attr("transform", "translate(" + pipeXPos + "," + (pipeYPos + pipeHeight) + ")");
+var xSilderHeight = 30;
+var xSliderLength = 30;
+var xSliderData = [
+    {x:-xSliderLength/2, y:-xSilderHeight},
+    {x:xSliderLength/2, y:-xSilderHeight},
+    {x:0, y:0}
+];
+// create the slider
+var slider = canvas.append("g")
+                .selectAll(".xSlider")
+                .data([xSliderData])
+                .enter()
+                .append("path")
+                .attr("class", "xSlider")
+                .attr("d",drawSlider)
+                .attr("fill", "steelblue");
+// place it under the pipe
+slider.attr("transform", "translate(" + (pipeXPos+parseInt(pipeLength/33)*7) + "," + (pipeYPos + pipeHeight) + ")");
 
 //line(dashed)
 var index = 7;
@@ -273,56 +284,122 @@ var dx = canvas.append("g")
 //                 .text("T: " + data[index].y.toFixed(2))
 //                 .style("fill", "white");
 //time data text
-// var timeTextBckGndWidth = 100;
-// var timeTextBckGndHeight = 30;
-// var timeTextBackGround = canvas.append("g")
-//                 .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
-//                 .append("rect")
-//                 .attr("x", widthScale(1.75))
-//                 .attr("y", heightScale(2.5))
-//                 .attr("width", timeTextBckGndWidth)
-//                 .attr("height", timeTextBckGndHeight)
-//                 .attr("fill", "black");
+var TextBckGndWidth = 260;
+var TextBckGndHeight = 90;
+var TextBackGround = canvas.append("g")
+                .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
+                .append("rect")
+                .attr("x", widthScale(.35))
+                .attr("y", heightScale(d3.max(y)))
+                .attr("width", TextBckGndWidth)
+                .attr("height", TextBckGndHeight)
+                .attr("fill", "black");
 
-// var dataTextTime = canvas.append("g")
-//                 .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
-//                 .append("text")
-//                 .attr("x", widthScale(1.8))
-//                 .attr("y", heightScale(2.2))
-//                 .attr("dy", ".35em")
-//                 .text("t: " + d3.select(".slider").property("value") + "s")
-//                 .style("fill", "white");
+var dataTextCurr = canvas.append("g")
+                .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
+                .append("text")
+                .attr("x", widthScale(.355))
+                .attr("y", heightScale(d3.max(y)-4))
+                .attr("dy", ".35em")
+                .text("T(x): " + data[3*index].y.toFixed(2) + "C")
+                .style("fill", "white");
+var dataTextPrev = canvas.append("g")
+                .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
+                .append("text")
+                .attr("x", widthScale(.355))
+                .attr("y", heightScale(d3.max(y)-4))
+                .attr("dy", "1.65em")
+                .text("T(x-dx): " + data[3*(index-1)].y.toFixed(2) + "C")
+                .style("fill", "white");
+var dataTextNext = canvas.append("g")
+                .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
+                .append("text")
+                .attr("x", widthScale(.355))
+                .attr("y", heightScale(d3.max(y)-4))
+                .attr("dy", "2.95em")
+                .text("T(x+dx): " + data[3*(index+1)].y.toFixed(2) + "C")
+                .style("fill", "white");
+let derivative = data[3*(index)+1].y-2*data[3*(index)].y+data[3*(index)-1].y;
+var dataTextDer = canvas.append("g")
+                .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
+                .append("text")
+                .attr("x", widthScale(.355))
+                .attr("y", heightScale(d3.max(y)-4))
+                .attr("dy", "4.25em")
+                .text("Derivative: " + derivative.toFixed(5) + "C/s")
+                .style("fill", "white");
 //slider drag event
 var bisect = d3.bisector(d => d).left;
 var sliderPosToGraph = d3.scaleLinear()
             .domain([pipeXPos, (pipeXPos + pipeLength)])
             .range([d3.min(x), d3.max(x)]);
-// var dragHandler = d3.drag()
-//     .on("drag", function (event) {
-//         d3.select(this)
-//             .attr("transform", "translate(" + (event.x >= pipeXPos? ((event.x <= pipeXPos+pipeLength)?
-//              event.x : pipeXPos+pipeLength): pipeXPos) +
-//              "," + (pipeYPos + pipeHeight) + ")");
-//         //move the line
-//         let sliderXPos = sliderPosToGraph(getXtranslatePos(d3.select(this).attr("transform")));
 
-//         let index = bisect(x, sliderXPos);
-//         dataLine.data([[{x: data[index].x, y: 0},{x: data[index].x, y: data[index].y},{x: 0, y: data[index].y}]])
-//         .attr("d",line);
-//         //move the pointer
-//         dataPointer.attr("cx", widthScale(data[index].x))
-//                 .attr("cy", heightScale(data[index].y));
-//         //move the text
-//         textBackGround.attr("x", widthScale(data[index].x))
-//                 .attr("y", heightScale(data[index].y));
-//         dataTextPos.attr("x", widthScale(data[index].x))
-//                 .attr("y", heightScale(data[index].y))
-//                 .text("x: " + data[index].x.toFixed(2));
-//         dataTextTemp.attr("x", widthScale(data[index].x))
-//                 .attr("y", heightScale(data[index].y))
-//                 .text("T: " + data[index].y.toFixed(2));
-//     });
-// dragHandler(slider);
+function step(mousePos){
+        let stepValue = parseInt(pipeLength/33);
+        let index = parseInt((mousePos-pipeXPos)/stepValue);
+        let dragPos = index*stepValue + pipeXPos;
+        return dragPos;
+}
+function stepId(mousePos){
+        let stepValue = parseInt(pipeLength/33);
+        let index = parseInt((mousePos-pipeXPos)/stepValue);
+        return index;
+}
+var dragHandler = d3.drag()
+    .on("drag", function (event) {
+        let mousePos = step(event.x);
+        let currId = stepId(event.x);
+        if(currId>0 && currId<34)
+                d3.select(this)
+                .attr("transform", "translate(" + (event.x >= pipeXPos? ((event.x <= pipeXPos+pipeLength)?
+                mousePos : pipeXPos+parseInt(pipeLength/33)*33): pipeXPos+parseInt(pipeLength/33)) +
+                "," + (pipeYPos + pipeHeight) + ")");
+        currId = (currId>32)?32:currId;
+        currId = (currId<1)?1:currId;
+        //move the line
+        // let index = bisect(x, sliderXPos);
+        // selectedId = index;
+        // console.log(index);
+        let prevId = currId - 1;
+        let nextId = currId + 1;
+        dataLinePrev.data([[{x: data[3*prevId].x, y: 0},{x: data[3*prevId].x, y: data[3*prevId].y}]])
+        .attr("d",line);
+        dataLineCurr.data([[{x: data[3*currId].x, y: 0},{x: data[3*currId].x, y: data[3*currId].y}]])
+        .attr("d",line);
+        dataLineCurrX.data([[{x: data[3*currId].x, y: data[3*currId].y},{x: 0, y: data[3*currId].y}]])
+        .attr("d",line);
+        dataLineNext.data([[{x: data[3*nextId].x, y: 0},{x: data[3*nextId].x, y: data[3*nextId].y}]])
+        .attr("d",line);
+    
+        let index = currId;
+        selectedId = currId;
+        Xcurr.attr("x",widthScale(data[3*(index)].x/2)).attr("y",heightScale(data[3*(index)].y)-5);
+        Tcurr.attr("x",-heightScale(data[3*(index)].y)-10).attr("y",widthScale(data[3*(index)].x) - 5);
+        dx.attr("x",widthScale(data[3*(index)].x)+5).attr("y",heightScale(0)+15);
+        Tprev.attr("x",-heightScale(data[3*(index-1)].y)-10).attr("y",widthScale(data[3*(index-1)].x) - 5);
+        Tnext.attr("x",-heightScale(data[3*(index+1)].y)-10).attr("y",widthScale(data[3*(index+1)].x) - 5);
+        //change temp data
+        dataTextCurr.text("T(x): " + data[3*(index)].y.toFixed(2) + "C");
+        dataTextPrev.text("T(x-dx): " + data[3*(index-1)].y.toFixed(2) + "C");
+        dataTextNext.text("T(x+dx): " + data[3*(index+1)].y.toFixed(2) + "C");
+        let derivative = data[3*(index)+1].y-2*data[3*(index)].y+data[3*(index)-1].y;
+        dataTextDer.text("Derivative: " + derivative.toFixed(5) + "C/s");
+        // dataLine.data([[{x: data[index].x, y: 0},{x: data[index].x, y: data[index].y},{x: 0, y: data[index].y}]])
+        // .attr("d",line);
+        // //move the pointer
+        // dataPointer.attr("cx", widthScale(data[index].x))
+        //         .attr("cy", heightScale(data[index].y));
+        // //move the text
+        // textBackGround.attr("x", widthScale(data[index].x))
+        //         .attr("y", heightScale(data[index].y));
+        // dataTextPos.attr("x", widthScale(data[index].x))
+        //         .attr("y", heightScale(data[index].y))
+        //         .text("x: " + data[index].x.toFixed(2));
+        // dataTextTemp.attr("x", widthScale(data[index].x))
+        //         .attr("y", heightScale(data[index].y))
+        //         .text("T: " + data[index].y.toFixed(2));
+    });
+dragHandler(slider);
 
 //time axis slider control
 d3.select(".slider").on("input", () =>{
@@ -351,6 +428,12 @@ d3.select(".slider").on("input", () =>{
     Tprev.attr("x",-heightScale(data[3*(index-1)].y)-10).attr("y",widthScale(data[3*(index-1)].x) - 5);
     Tnext.attr("x",-heightScale(data[3*(index+1)].y)-10).attr("y",widthScale(data[3*(index+1)].x) - 5);
     dx.attr("x",widthScale(data[3*(index)].x)+5).attr("y",heightScale(0)+15);
+    //change temp data
+    dataTextCurr.text("T(x): " + data[3*(index)].y.toFixed(2) + "C");
+    dataTextPrev.text("T(x-dx): " + data[3*(index-1)].y.toFixed(2) + "C");
+    dataTextNext.text("T(x+dx): " + data[3*(index+1)].y.toFixed(2) + "C");
+    let derivative = data[3*(index)+1].y-2*data[3*(index)].y+data[3*(index)-1].y;
+    dataTextDer.text("Derivative: " + derivative.toFixed(5) + "C/s");
     //move the pointer
 //     dataPointer.attr("cx", widthScale(data[index].x))
 //             .attr("cy", heightScale(data[index].y));
@@ -372,7 +455,7 @@ for(let i = 0; i<34; i++){
                 .attr("transform","translate(" + graphXOffset + "," + (graphYOffset+40) + ")")
                 .append("circle")
                 .attr("class", "pointPipe").attr("id","p"+i)
-                .attr("cx",widthScale(data[3*i].x)).attr("cy", heightScale(data[0].y)).attr("r", 6).attr("fill","green")
+                .attr("cx",widthScale(data[3*i].x)).attr("cy", heightScale(0)).attr("r", 6).attr("fill","green")
                 .on("mousedown", function (){
                         if(d3.select(this).property("id")=="p33" || d3.select(this).property("id")=="p0") return;
                         d3.selectAll(".pointPipe").attr("stroke", "none");
@@ -401,6 +484,13 @@ function drawLines(currId,nextId,prevId){
     dx.attr("x",widthScale(data[3*(index)].x)+5).attr("y",heightScale(0)+15);
     Tprev.attr("x",-heightScale(data[3*(index-1)].y)-10).attr("y",widthScale(data[3*(index-1)].x) - 5);
     Tnext.attr("x",-heightScale(data[3*(index+1)].y)-10).attr("y",widthScale(data[3*(index+1)].x) - 5);
+
+        //change temp data
+        dataTextCurr.text("T(x): " + data[3*(index)].y.toFixed(2) + "C");
+        dataTextPrev.text("T(x-dx): " + data[3*(index-1)].y.toFixed(2) + "C");
+        dataTextNext.text("T(x+dx): " + data[3*(index+1)].y.toFixed(2) + "C");
+        let derivative = data[3*(index)+1].y-2*data[3*(index)].y+data[3*(index)-1].y;
+        dataTextDer.text("Derivative: " + derivative.toFixed(5) + "C/s");
     
 }
 function getCurrId(id){

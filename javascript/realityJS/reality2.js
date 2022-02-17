@@ -114,6 +114,16 @@ function setImage(length){
 }
 
 function setText(len){
+    if(len<0.5/3){
+        d3.select("#point1").style("visibility","hidden");
+        d3.select("#point2").style("visibility","hidden");
+    }else if(len<1.5/3 && len>0.5/3){
+        d3.select("#point1").style("visibility","visible");
+        d3.select("#point2").style("visibility","hidden");
+    }else{
+        d3.select("#point1").style("visibility","visible");
+        d3.select("#point2").style("visibility","visible");
+    }
     if(len == 1){
         d3.select("#idealize").style("visibility", "visible");
     }
