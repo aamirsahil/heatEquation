@@ -6,7 +6,7 @@ function u(x,t){
 }
 
 //x=position, y=temperature, u=y(x)
-var x = [...Array(101).keys()].map( d => (d*0.02));
+var x = [...Array(101).keys()].map( d => (d*0.005));
 var y = x.map( d => u(d,0));
 var data = x.map( (d) => ({x: d, y: u(d,0)}));
 
@@ -30,7 +30,7 @@ var widthScale = d3.scaleLinear()
 
 var heightScale = d3.scaleLinear()
                     .domain([d3.min(y),d3.max(y)])
-                    .range([canvasHeight/2,0]);
+                    .range([canvasHeight/4,0]);
 //graph
 var graphXOffset = 40;
 var graphYOffset = 70;
@@ -71,10 +71,10 @@ var plot = canvas.append("g")
             .style("opacity", "0%");
 
 // pipe
-var pipeLength = widthScale(2);
+var pipeLength = widthScale(.5);
 var pipeHeight = 20;
 var pipeXPos = 40;
-var pipeYPos = (canvasHeight/4+graphYOffset-pipeHeight/2);
+var pipeYPos = (canvasHeight/4+graphYOffset+20-pipeHeight/2);
 //pipe color
 var silverColor = "rgb(138,138,138)";
 var silverColorCenter = "rgb(237,237,237)";
@@ -89,7 +89,7 @@ pipeGradient.append("stop")
         .attr("offset", "100%").style("stop-color", silverColor).style("stop-opacity", "1");
 // 1D pipe
 var pipe1DHeight = 5;
-var pipe1DYPos = (canvasHeight/4+graphYOffset-pipe1DHeight/2);
+var pipe1DYPos = (canvasHeight/4+graphYOffset+20-pipe1DHeight/2);
 var pipe1D = canvas.append("g")
             .attr("transform", "translate(" + graphXOffset + "," + pipe1DYPos + ")")
             .append("rect")
@@ -194,7 +194,7 @@ var timeYOffset = (canvasHeight/2+50);
 var timeTextBackGround = canvas.append("g")
                 .attr("transform","translate(" + timeXOffset + "," + timeYOffset + ")")
                 .append("rect")
-                .attr("x", widthScale(1.0))
+                .attr("x", widthScale(.25))
                 .attr("y", heightScale(2.5))
                 .attr("width", timeTextBckGndWidth)
                 .attr("height", timeTextBckGndHeight)
@@ -203,33 +203,34 @@ var timeTextBackGround = canvas.append("g")
 var dataTextTime = canvas.append("g")
                 .attr("transform","translate(" + timeXOffset + "," + timeYOffset + ")")
                 .append("text")
-                .attr("x", widthScale(1.05))
+                .attr("x", widthScale(.255))
                 .attr("y", heightScale(2.2))
                 .attr("dy", ".35em")
                 .text("t: " + d3.select(".slider").property("value") + "s")
                 .style("fill", "white").style("visibility","hidden");
+
+var tempText =canvas.append("g")
+                .attr("transform","translate(" + timeXOffset + "," + graphYOffset + ")")
+                .append("text")
+                .attr("x", widthScale(.3))
+                .attr("y", 0)
+                .attr("id","tempText")
+                .attr("dy", ".35em")
+                .text("Temperature")
+                .style("fill", "red").style("visibility","hidden");
 //DragMsg
-var dragTextBckGndWidth = 600;
-var dragTextBckGndHeight = 60;
-var dragXOffset = 0;
+var dragXOffset = -100;
 var dragYOffset = (canvasHeight/2+200);
-var dragTextBackGround = canvas.append("g")
-                .attr("transform","translate(" + dragXOffset + "," + dragYOffset + ")")
-                .append("rect")
-                .attr("x", widthScale(0.4))
-                .attr("y", heightScale(2.4))
-                .attr("width", dragTextBckGndWidth)
-                .attr("height", dragTextBckGndHeight)
-                .attr("fill", "black").style("visibility","hidden");
+
 
 var dragTextTime = canvas.append("g")
                 .attr("transform","translate(" + dragXOffset + "," + dragYOffset + ")")
                 .append("text")
-                .attr("x", widthScale(0.5))
+                .attr("x", widthScale(0.11))
                 .attr("y", heightScale(1.9))
                 .attr("dy", ".35em")
                 .text("To know the variation of temperature in the rod qualitatively, drag the slider.")
-                .style("fill", "white").style("visibility","hidden");
+                .style("fill", "rgb(73, 7, 134)").style("visibility","hidden").style("font-size","1.3rem");
 //slider drag event
 var bisect = d3.bisector(d => d).left;
 var sliderPosToGraph = d3.scaleLinear()
@@ -280,9 +281,11 @@ var slider = d3
 canvas.append("g").attr("class","timeSlider")
     .attr("transform", "translate(" + pipeXPos + "," + sliderYPos + ")")
     .call(slider).style("visibility", "hidden");
+
+var tempTextScale = d3.scaleLinear().domain([0,0.5])
+                        .range([0,heightScale(0)-20])
 //time axis slider control
 slider.on("onchange", () =>{
-    dragTextBackGround.style("visibility", "hidden");
     dragTextTime.style("visibility", "hidden");
     let time = slider.value();
     data = x.map( (d) => ({x: d, y: u(d,time)}));
@@ -291,6 +294,7 @@ slider.on("onchange", () =>{
         .data([data])
         .attr("d",line);
 
+    tempText.attr("y",heightScale(data[50].y)-20);
     // //move the line
     // let sliderXPos = sliderPosToGraph(getXtranslatePos(d3.select(".xSlider").attr("transform")));
 
@@ -341,19 +345,20 @@ function turnGraphOn(len){
 function turnText(len){
     (len > 0.2/2)? d3.select("#point1").style("visibility","visible"):d3.select("#point1").style("visibility","hidden");
     (len > 1.2/2)? d3.select("#point2").style("visibility","visible"):d3.select("#point2").style("visibility","hidden");
-    (len == 1)? dragTextBackGround.style("visibility", "visible"):dragTextBackGround.style("visibility", "hidden");
     (len == 1)? dragTextTime.style("visibility", "visible"):dragTextTime.style("visibility", "hidden");
     if(len > 1.9/2){
         timeTextBackGround.style("visibility","visible");
         dataTextTime.style("visibility","visible");
         d3.select(".timeSlider").style("visibility","visible");
         d3.select("#point3").style("visibility","visible");
+        tempText.style("visibility","visible");
     }
     else{
         timeTextBackGround.style("visibility","hidden");
         dataTextTime.style("visibility","hidden");
         d3.select(".timeSlider").style("visibility","hidden");
         d3.select("#point3").style("visibility","hidden");
+        tempText.style("visibility","hidden");
     }
 }
 //idelaization slider control
@@ -363,7 +368,6 @@ d3.select(".slider").on("input", () =>{
     let min = d3.select(".slider").property("min");
     let len = value/(max - min);
 
-    console.log(len);
     makeOneD(len);
     turnGraphOn(len);
     turnText(len);
