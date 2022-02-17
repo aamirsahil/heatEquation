@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/d3-simple-slider"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css\reality\reality2.css">
+    <link rel="stylesheet" href="css\idealization\idealization.css">
     <link rel="stylesheet" href="css\style.css">
     <link rel="stylesheet" href="css\navbar.css">
 
@@ -22,7 +22,7 @@
 <div class="row" id="navbar">
     <div class="col-md-2"><a href="01_overview.html"><img id="start" src="tifr-logo-black.png" alt="dummy.jpg"></a></div>
     <div class="col-md-2"><a href="02_reality.html"><img id="img1" src="images\navbar\navbar01.jpg" alt="dummy.jpg"><div class="content" id="text1"></div></a></div>
-    <div class="col-md-2"><a href="#"><img id="selected" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
+    <div class="col-md-2"><a href="02_reality2.html"><img id="selected" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
     <div class="col-md-2"><a href="04_descretization.html"><img id="img3" src="images\navbar\navbar03.jpg" alt="dummy.jpg"><div class="content" id="text3"></div></a></div>
     <div class="col-md-2"><a href="05_geometric.html"><img id="img4" src="images\navbar\navbar04.jpg" alt="dummy.jpg"><div class="content" id="text4"></div></a></div>
     <div class="col-md-2"><a href="06_mathematical.html"><img id="img5" src="images\navbar\navbar05.jpg" alt="dummy.jpg"><div class="content" id="text5"></div></a></div>
@@ -34,15 +34,6 @@
     </svg>
 
     <!-- Progress Bar(close) -->
-
-    <!-- NextBtn -->
-    <div class="btnNav" id="nextBtn">
-        <div class="arrow right"></div>
-    </div>
-    <!-- PrevBtn -->
-    <div class="btnNav" id="prevBtn">
-        <div class="arrow left"></div>
-    </div>
 
 </div>
 
@@ -62,8 +53,8 @@
                 we should extract the essential details by making rational approximatioms.</li>
                 <li>Our objective is then to discard all parameters one by one and reach a minimal model that best represent
                 the system.</li>
+                <li>Drag the slider to view the process of idealization</li>
             </ul>
-            <p>Drag the slider to view the process of idealization</p>
 
         <!-- Explantion(close) -->
 
@@ -88,13 +79,14 @@
         <!-- burner -->
         <div id="burner"></div>
         <!-- background -->
+        <div id="backGrnd"></div>
         <!-- slider -->
     </div>
     <div class="row" id="idealize">
         <div class="text">
-            <b><span>To mathematically model the variation of temperature in the rod let us idealise the system</span></b><br>
-                 <a href="03_idealization2.html"
-                 class="btn btn-success" type="button">Lets idealise the rod</a>
+            <b><span>To see the individual parts of the system in action, lets discretize the rod !</span></b><br>
+                 <a href="04_descretization.html"
+                 class="btn btn-success" type="button">Lets discretize the rod</a>
         </div>
     </div>
     </div>
@@ -102,6 +94,6 @@
 </div>
 
 </body>
-<script src="javascript\realityJS\reality2.js"></script>
+<script src="javascript\idealizationJS\idealization.js"></script>
 <script src="javascript\navbar.js"></script>
 </html>

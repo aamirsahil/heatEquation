@@ -13,6 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/mathematical/mathematical.css">
 
 </head>
 <body>
@@ -20,20 +21,29 @@
 <!--    The Navigation Bar  -->
 
 <div class="row" id="navbar">
-    <div class="col-md-2"><a href="01_overview.html"><img id="start" src="images\navbar\start.jpg" alt="dummy.jpg"></a></div>
+    <div class="col-md-2 navbar"><a href="01_overview.html"><img id="start" src="tifr-logo-black.png" alt="dummy.jpg"></a></div>
     <div class="col-md-2"><a href="02_reality.html"><img id="img1" src="images\navbar\navbar01.jpg" alt="dummy.jpg"><div class="content" id="text1"></div></a></div>
     <div class="col-md-2"><a href="03_idealization.html"><img id="img2" src="images\navbar\navbar02.jpg" alt="dummy.jpg"><div class="content" id="text2"></div></a></div>
     <div class="col-md-2"><a href="04_descretization.html"><img id="img3" src="images\navbar\navbar03.jpg" alt="dummy.jpg"><div class="content" id="text3"></div></a></div>
     <div class="col-md-2"><a href="05_geometric.html"><img id="img4" src="images\navbar\navbar04.jpg" alt="dummy.jpg"><div class="content" id="text4"></div></a></div>
-    <div class="col-md-2"><a href="#"><img id="selected" src="images\navbar\navbar05.jpg" alt="dummy.jpg"><div class="content" id="text5"></div></a></div>
+    <div class="col-md-2"><a href="#"><img id="selected"src="images\navbar\navbar05.jpg" alt="dummy.jpg"><div class="content" id="text5"></div></a></div>
     
     <!-- Progress Bar -->
 
     <svg class="svgNav" width="100%" height="20px">
-        <path id="track" stroke="black" stroke-width="1"></path>
+        <path id="track" stroke-width="10"></path>
     </svg>
 
     <!-- Progress Bar(close) -->
+
+    <!-- NextBtn -->
+    <div class="btnNav" id="nextBtn">
+        <div class="arrow right"></div>
+    </div>
+    <!-- PrevBtn -->
+    <div class="btnNav" id="prevBtn">
+        <div class="arrow left"></div>
+    </div>
 
 </div>
 
@@ -41,57 +51,37 @@
 
 <!--    Main Body  -->
     <div class="row">
-<!--        Derivation  -->
-        <div class="col-md-6" id="exp" style="text-align:left; font-size: 1.3em;">
+        <div class="col-md-6" id="der">
 <!--            Derivation  -->
-<!--solution.js will create the necessary elements  -->
+            <h1>Algebraic formulation</h1>
+            <p>
+                From Newton's law of cooling,
+                $$ \frac{\partial T(x,t)}{\partial t} \propto [T(x+dx,t) - T(x,t)] + [T(x-dx,t) - T(x,t)] $$
+                Implies,
+                $$ \frac{\partial T(x,t)}{\partial t} = k_1[T(x+dx,t) - 2T(x,t) + T(x-dx,t)] $$
+                From calculus we have(click to expand),
+                <div class="expand">$$ [T(x+dx) - 2T(x) + T(x-dx)] = (dx^2)\frac{d^2 T(x)}{d x^2} $$</div>
+                \( \therefore \) $$ \frac{\partial T(x,t)}{\partial t} = k_1(dx^2)\frac{d^2 T(x)}{d x^2} $$
+                $$ \frac{\partial T(x,t)}{\partial t} = k\frac{d^2 T(x)}{d x^2}\text{ ,where } k = k_1(dx^2) $$
+            </p>
 <!--            Derivation(end)-->
         </div>
 <!--        Derivation(close)  -->
-<!--        WolframAlpha  -->
-        <div class="col-md-6 vh-100" style="background-color: #f5ce42; text-align: center; position: relative;">
-<!--            <div id="borderLeft" class="border" style="top: 30%; left: 5%;">-->
-<!--                <div class="arrow left"></div>-->
-<!--            </div>-->
-<!--            <div id="borderRight" class="border" style="top: 30%; right: 0%;">-->
-<!--                <div class="arrow right"></div>-->
-<!--            </div>-->
-            <img src="images\graph.png" id="graph" style="visibility: hidden; position: absolute; top: 10px; left: 113px; width: 75%; height: 75%; outline: 8px solid #555; border-radius: 20%;">
-            <div id="my_dataviz" style="visibility: visible; position: absolute; top: 5%; left: 13%;"></div>
-<!--            <canvas id="canvas" style="position: absolute; top: 5%; left: 62%; background-color: black;" height="480%" width="200%"></canvas>-->
-            <table style="visibility: hidden; position: absolute; top: 10%; left: 40%;">
-                <tr>
-                    <th>Height</th>
-                    <th>Pressure</th>
-                </tr>
-            </table>
-<!--            <div class="row" style="border-bottom: solid; border-color: #f5ce42; border-width: 20px;">-->
-<!--                <h3>Wolfram widget for calculation</h3>-->
-<!--                <script type="text/javascript" id="WolframAlphaScript65884a38afa3e9a51770a396918fd5f" src="//www.wolframalpha.com/widget/widget.jsp?id=65884a38afa3e9a51770a396918fd5f"></script>-->
-<!--            </div>-->
-<!--            <div class="row" id="exercise" style="margin:auto; font-size: 1.5rem; visibility: hidden;">-->
-<!--                <h1>Exercises</h1>-->
-<!--                <ul>-->
-<!--                    <li>Variation in \(g\) with \(z\).</li>-->
-<!--                    <li>Different equation of state.</li>-->
-<!--                    <li>Mixture of gases.</li>-->
-<!--                </ul>-->
-<!--            </div>-->
+        <div class="col-md-6 vh-100" id="exp">
+            $$ \frac{dT}{dx} = \frac{T(x+dx) - T(x)}{dx} $$
+            $$ \frac{d^2T}{dx^2} = \frac{(\frac{dT}{dx})_{x+dx} - (\frac{dT}{dx})_{x}}{dx} $$
+            $$ = \frac{(\frac{T(x+2dx) - T(x+dx)}{dx}) - (\frac{T(x+dx) - T(x)}{dx})}{dx} $$
+            $$ = \frac{T(x+2dx) - T(x+dx) + T(x)}{(dx)^2} $$
+            Putting \(x = x+dx\),
+            $$ \frac{d^2T}{dx^2} = \frac{T(x+dx) - 2T(x) + T(x-dx)}{(dx)^2} $$
+            $$ \therefore T(x+dx) - 2T(x) + T(x-dx) = (dx^2)\frac{d^2 T(x,t)}{dx^2} $$
         </div>
-<!--        WolframAlpha(close)  -->
     </div>
 <!--    Main Body(close)  -->
 </div>
 </body>
-<script src="Javascript\solution.js"></script>
-<script src="Javascript\navbar.js"></script>
-<script src="Javascript\solutionGraph.js"></script>
-<script src="Javascript\solutionControl.js"></script>
+<script src="javascript\navbar.js"></script>
+<script src="javascript\mathematicalJS\solution.js"></script>
 <script>
-    function myFunction()
-    {
-        document.getElementById("graph").style.visibility = "visible";
-        document.getElementById("button").style.visibility = "hidden";
-    }
 </script>
 </html>
