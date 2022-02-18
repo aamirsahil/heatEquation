@@ -24,7 +24,7 @@
   justify-content: space-around;
 }
 #reality{
-  background: url("../../images/idealization/idealization01.png") no-repeat;
+  background: url("../images/idealization/idealization01.png") no-repeat;
   top: 20%;
   left: 34%;
   z-index: 1;
@@ -36,7 +36,7 @@
 }
 
 #burner{
-  background: url("../../images/idealization/fireImage.gif") no-repeat;
+  background: url("../images/idealization/fireImage.gif") no-repeat;
   top: 25%;
   z-index: 0;
   left: 25%;
