@@ -63,9 +63,9 @@ var graphBckGrnd = canvas.append("g")
                 .style("opacity","0%");
 // T and x axis
 var axisX = d3.axisBottom(widthScale)
-            .ticks(5);
+            .ticks(0);
 var axisT = d3.axisLeft(heightScale)
-            .ticks(5);
+            .ticks(0);
 canvas.append("g")
         .attr("transform", "translate(" + graphXOffset + "," + 110 + ")")
         .attr("id","Taxis")
