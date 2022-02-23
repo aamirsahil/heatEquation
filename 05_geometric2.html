@@ -41,9 +41,9 @@
         <div class="arrow right"></div>
     </div>
     <!-- PrevBtn -->
-    <div class="btnNav" id="prevBtn">
+    <!-- <div class="btnNav" id="prevBtn">
         <div class="arrow left"></div>
-    </div>
+    </div> -->
 
 </div>
 
@@ -57,15 +57,19 @@
             <ul>
                 <li>We place the discretised rod in a coordinate system.</li>
                 <li>The position of a mass point is denoted by \(x\) and its temperature by \(T\).</li>
-                <li>Position and temperature of its neighbouring points at time \(t\) are denoted by \(T (x + dx, t)\) and \(T (x -
+                <li>Temperature of any 3 consecutive points at time \(t\) are denoted by \(T (x + dx, t)\), \(T(x,t)\) and \(T (x -
                     dx, t)\)</li>
                 <li>The variation of temperature \(T\) of a mass point at \(x\) with time \(t\) is proportional to the difference in temperature
-                    with its neighbouring points,$$ T(x + dx, t) - T(x, t) \text{ and } T(x - dx, t) - T(x, t) $$</li>
+                    with its neighbouring points,</li>
             </ul>
-            $$ (\frac{\partial T}{\partial t})_{t=t_{i}} \propto [T(x_{i} + dx, t_{i}) - T(x_{i}, t_{i})] + [T(x_{i} - dx, t_{i}) - T(x_{i}, t_{i})] $$
-            <div class="instruct">Drag slider to see variation in Temperature, \(T\), with time, \(t\)!</div>
-            <div class="slidecontainer">
-                <input class="slider" type="range" min="0" max=".4" value="0" step=".005" autocomplete="off">
+            <div class="diffEq">
+                $$ (\frac{\partial T}{\partial t})_{t=t_{i}} \propto [T(x_{i} + dx, t_{i}) - T(x_{i}, t_{i})] + [T(x_{i} - dx, t_{i}) - T(x_{i}, t_{i})] $$
+            </div>
+            <div class="instru">
+                <div class="instruct">Drag slider to see variation in Temperature, \(T\), with time, \(t\)!</div>
+                <div class="slidecontainer">
+                    <input class="slider" type="range" min="0" max=".4" value="0" step=".005" autocomplete="off">
+                </div>
             </div>
 <!-- Explanation(close) -->
         </div>
