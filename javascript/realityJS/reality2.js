@@ -1,6 +1,6 @@
 // Canvas dimensions
-var canvasWidth = 1000;
-var canvasHeight = 450;
+var canvasWidth = "70%";
+var canvasHeight = "70%";
 // Create canvas to put svg elements
 var canvas = d3.select(".col-md-7")
                 .append("svg")
@@ -22,10 +22,12 @@ pipeGradient.append("stop")
         .attr("offset", "50%").style("stop-color", silverColorCenter).style("stop-opacity", "1");
 pipeGradient.append("stop")
         .attr("offset", "100%").style("stop-color", silverColor).style("stop-opacity", "1");
+var pipeXOffset = 25;
+var pipeYOffset = 100;
 // Creating pipe element
 var pipe = canvas
     .append("g").attr("class", "pipe")
-    .attr("transform", "translate(100, 100)")
+    .attr("transform", "translate("+pipeXOffset+", 100)")
     .append("rect")
     .attr("width",pipeLength)
     .attr("height",pipeHeight)
@@ -46,7 +48,7 @@ heatGradient.append("stop")
 
 var heat = canvas
     .append("g").attr("class", "heat")
-    .attr("transform", "translate(100, 100)")
+    .attr("transform", "translate("+pipeXOffset+", 100)")
     .append("rect")
     .attr("width",sliderToPipeScale(1/3))
     .attr("height",pipeHeight)
