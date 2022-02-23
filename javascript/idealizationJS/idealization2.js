@@ -12,7 +12,7 @@ var data = x.map( (d) => ({x: d, y: u(d,0)}));
 
 
 //canvas dims
-var canvasWidth = 850;
+var canvasWidth = 700;
 var canvasHeight = 550;
 var graphOffeset = 50;
 //define the entire canvas(right side)
