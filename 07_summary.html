@@ -19,21 +19,17 @@
     <div class="container-fluid vh-100">
         
             <!-- NextBtn -->
-            <div class="btnNav" id="nextBtn">
+            <!-- <div class="btnNav" id="nextBtn">
                 <div class="arrow right"></div>
-            </div>
+            </div> -->
             <!-- PrevBtn -->
-            <div class="btnNav" id="prevBtn">
+            <!-- <div class="btnNav" id="prevBtn">
                 <div class="arrow left"></div>
-            </div>
+            </div> -->
         
-        <div class="row" id="sliderContainer">
-            <div class="instruct">Drag the slider to see how reality is loaded into an equation</div>
-            <input id="slider1" type="range" min="0" max="100" value="0" class="slider" step="0.0001" autocomplete="off">
-        </div>
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4">
+            <div class="col-md-4 system">
 
                 <div id="reality"></div>
                 <div id="burner"></div>
@@ -47,6 +43,14 @@
                 <div id="summary"></div>
                 <div class="desc" id="text">We started with an real life example which we needed to model to obtain relation
                      between relevant quantities.</div>
+
+                <div class="row" id="sliderContainer">
+                    <div class="instruct">Drag the slider to see how reality is loaded into an equation</div>
+                    <input id="slider1" type="range" min="0" max="100" value="0" class="slider" step="0.0001" autocomplete="off">
+                </div>
+                <a href="01_overview.html" role="button" id ="button" class="btn btn-block btn-dark" style="margin: 5px;">
+                    Go to start
+                </a>
             </div>
             <div class="col-md-4"></div>
         </div>
