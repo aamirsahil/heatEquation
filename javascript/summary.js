@@ -15,15 +15,24 @@ var canvas = d3.select("#summary")
                 .attr("width","100%")
                 .attr("height","100%");
 
+var backGrndGradient = canvas.append("defs").append("linearGradient")
+            .attr("id", "backGrndGradient")
+            .attr("x1", "0%").attr("y1", "0%").attr("x2", "0%").attr("y2", "100%");
+backGrndGradient.append("stop")
+        .attr("offset", "0%").style("stop-color", "#def0ff").style("stop-opacity", "1")
+backGrndGradient.append("stop")
+        .attr("offset", "50%").style("stop-color", "#96d0ff").style("stop-opacity", "1");
+backGrndGradient.append("stop")
+        .attr("offset", "100%").style("stop-color", "#def0ff").style("stop-opacity", "1");
 var backGrnd = canvas.append("rect").attr("x",0).attr("y",0)
                 .attr("width","100%").attr("height","100%")
-                .attr("fill","black").attr("rx",30);
+                .attr("fill","url(#backGrndGradient)");
 
 // Pipe dimension
-var pipeLength = 300;
+var pipeLength = 350;
 var pipeHeight = 20;
 // Creating pipe element
-var pipeXOffset = 80;
+var pipeXOffset = 50;
 var pipeYoffset = 200;
 var pipe1DHeight = 6;
 var pipe1DYoffset = pipeYoffset + pipeHeight/2 - pipe1DHeight/2;
@@ -70,23 +79,25 @@ canvas.append("g")
         .attr("transform", "translate(" + graphXOffset + "," + 110 + ")")
         .attr("id","Taxis")
         .attr("class", "yAxis")
-        .call(axisT);
+        .call(axisT).style("opacity","0%");
 canvas.append("g")
         .attr("transform","translate(" + graphXOffset +"," + pipe1DYoffset + ")")
         .attr("id","Xaxis")
         .attr("class", "xAxis")
-        .call(axisX);
+        .call(axisX).style("opacity","0%");
 canvas.append("text")
+        .attr("class","label")
         .attr("text-anchor", "end")
-        .attr("x", graphWidth + 50)
+        .attr("x", graphWidth + 30)
         .attr("y", pipe1DYoffset - 10)
-        .text("Position");
+        .text("Position").style("opacity","0%");
 canvas.append("text")
+    .attr("class","label")
     .attr("text-anchor", "end")
     .attr("transform", "rotate(-90)")
     .attr("y", graphXOffset+15)
     .attr("x", -graphYOffset-12)
-    .text("Temperature");
+    .text("Temperature").style("opacity","0%");
 //convert a set of d to correspondig set (x,y)
 var line = d3.line()
     .x( d => widthScale(d.x))
@@ -104,7 +115,7 @@ var dataLine = canvas.append("g")
         .attr("fill","none")
         .attr("stroke", "black")
         .attr("stroke-width", 3)
-        .attr("stroke-dasharray",3);
+        .attr("stroke-dasharray",3).style("opacity","0%");
 //discrete pipe
 for(let i = 0; i<26; i++){
     canvas.append("g")
@@ -210,22 +221,32 @@ function setCanvas(length)
 {
     if(length <= 1/5){
         let len = (length-0)/(1/5 - 0);
+        resetCanvas(1);
+        d3.select(".instruct").text("Reality").style("font-size","1.1rem");
         setReality(len);
     }
     else if(length > 1/5 && length <= 2/5){
+        resetCanvas(2);
         let len = (length-1/5)/(2/5 - 1/5);
+        d3.select(".instruct").text("Idealiztion").style("font-size","1.1rem");
         setIdealization(len);
     }
     else if(length > 2/5 && length <= 3/5){
+        resetCanvas(3);
         let len = (length-2/5)/(3/5 - 2/5);
+        d3.select(".instruct").text("Discretization").style("font-size","1.1rem");
         setDiscretization(len);
     }
     else if(length > 3/5 && length <= 4/5){
+        resetCanvas(4);
         let len = (length-3/5)/(4/5 - 3/5);
+        d3.select(".instruct").text("Geometry").style("font-size","1.1rem");
         setGeomerty(len);
     }
     else{
+        resetCanvas(5);
         let len = (length-4/5)/(5/5 - 4/5);
+        d3.select(".instruct").text("Algebra").style("font-size","1.1rem");
         setMathematical(len);
     }
 }
@@ -278,6 +299,7 @@ function graphVisibility(len){
     graphBckGrnd.style("opacity",opacityReverse + "%");
     d3.select("#Xaxis").style("opacity",opacityReverse + "%");
     d3.select("#Taxis").style("opacity",opacityReverse + "%");
+    d3.selectAll(".label").style("opacity",opacityReverse + "%");
     dataLine.style("opacity",opacityReverse + "%");
     d3.select("#tempText").style("opacity",opacity(len,0,1/3) + "%");
 }
@@ -309,3 +331,51 @@ function equationAppear(len){
 }
 d3.select("#nextBtn").on("mousedown", function() {window.location = "08_exercise.html";});
 d3.select("#prevBtn").on("mousedown", function() {window.location = "06_mathematical.html";});
+
+function resetCanvas(i){
+    switch(i){
+        case 1:
+            graphBckGrnd.style("opacity","0%");
+            d3.select("#Xaxis").style("opacity","0%");
+            d3.select("#Taxis").style("opacity","0%");
+            d3.selectAll(".label").style("opacity","0%");
+            dataLine.style("opacity","0%");
+            d3.select("#eq01").style("visibility","hidden");
+            d3.select("#eq02").style("visibility","hidden");
+            break;
+        case 2:
+            graphBckGrnd.style("opacity","0%");
+            d3.select("#Xaxis").style("opacity","0%");
+            d3.select("#Taxis").style("opacity","0%");
+            d3.selectAll(".label").style("opacity","0%");
+            dataLine.style("opacity","0%");
+            d3.select("#reality").style("opacity","0%");
+            d3.select("#eq01").style("visibility","hidden");
+            d3.select("#eq02").style("visibility","hidden");
+            break;
+        case 3:
+            d3.select("#burner").style("opacity","0%");
+            plot.style("visibility","visible");
+            graphBckGrnd.style("opacity","0%");
+            d3.select("#Xaxis").style("opacity","0%");
+            d3.select("#Taxis").style("opacity","0%");
+            d3.selectAll(".label").style("opacity","0%");
+            dataLine.style("opacity","0%");
+            d3.select("#reality").style("opacity","0%");
+            d3.select("#eq01").style("visibility","hidden");
+            d3.select("#eq02").style("visibility","hidden");
+            break;
+        case 4:
+            d3.select("#burner").style("opacity","0%");
+            plot.style("visibility","visible");
+            d3.select("#reality").style("opacity","0%");            
+            d3.select("#eq01").style("visibility","hidden");
+            d3.select("#eq02").style("visibility","hidden");
+            break;
+        case 5:
+            d3.select("#burner").style("opacity","0%");
+            plot.style("visibility","visible");
+            d3.select("#reality").style("opacity","0%");
+            break;
+    }
+}
