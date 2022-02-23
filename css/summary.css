@@ -3,7 +3,6 @@
   outline: 8px solid #555;
   width: 100%;
   height: 450px;
-  border-radius: 20%;
   }
 .desc {
     visibility: visible;
@@ -18,30 +17,32 @@
 }
 .container-fluid{
   background-color: #e8eefa;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
+.col-md-4.system{
+  position: relative;
+  text-align: center;
+}
 #reality{
-  background: url("../images/idealization/idealization01.png") no-repeat;
-  top: 20%;
-  left: 34%;
+  background: url("../../images/idealization/idealization01.png") no-repeat;
+  top: 0%;
+  left: 0%;
   z-index: 1;
   opacity: 100%;
   outline: 8px solid #555;
-  width: 32%;
-  height: 65%;
-  border-radius: 20%;
+  width: 100%;
+  height: 450px;
 }
 
 #burner{
-  background: url("../images/idealization/fireImage.gif") no-repeat;
-  top: 25%;
+  background: url("../../images/idealization/fireImage.gif") no-repeat;
+  top: 20%;
   z-index: 0;
-  left: 25%;
-  width: 20%;
-  height: 60%;
+  left: 0%;
+  width: 200px;
+  height: 200px;
 }
 #reality, #burner {
   position: absolute;
@@ -51,31 +52,34 @@
   background-size: cover;
 }
 #slider1{
-  width: 50%;
+  width: 100%;
 }
 #sliderContainer{
+  padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 #eq01,#eq02{
   position: absolute;
-  top: 65%;
+  top: 55%;
   color: white;
 }
 #eq01{
-  left:36%;
+  color: black;
+  left:5%;
   font-size: .85rem;
   visibility: hidden;
 }
 #eq02{
-  left: 45%;
+  color: black;
+  left: 30%;
   visibility: hidden;
 }
 .instruct{
   color: rgb(73, 7, 134);
   text-align: center;
-  font-size: 1.3em;
+  font-size: .8em;
 }
 /* navigation */
 .btnNav{
