@@ -81,6 +81,7 @@
   }
   .btnNav:hover{
     background-color: rgb(9, 194, 9);
+    cursor: pointer;
   }
   .arrow {
     position: absolute;
