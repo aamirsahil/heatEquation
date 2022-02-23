@@ -23,7 +23,7 @@ var data = x.map( (d) => ({x: d, y: u(d,0)}));
 
 
 //canvas dims
-var canvasWidth = 850;
+var canvasWidth = 750;
 var canvasHeight = 550;
 var graphOffeset = 50;
 //define the entire canvas(right side)
@@ -40,12 +40,12 @@ var heightScale = d3.scaleLinear()
                     .domain([0,d3.max(y)])
                     .range([canvasHeight/2,0]);
 //graph
-var graphXOffset = 40;
+var graphXOffset = 60;
 var graphYOffset = 40;
 var graphWidth = canvasWidth;
 var graphHeight = canvasHeight/1.5;
 var graphBckGrnd = canvas.append("g")
-                .attr("transform","translate(0" + "," + (graphYOffset-10) + ")")
+                .attr("transform","translate("+20 + "," + (graphYOffset-10) + ")")
                 .append("rect")
                 .attr("width", graphWidth)
                 .attr("height", graphHeight)
@@ -74,7 +74,7 @@ canvas.append("text")
 canvas.append("text")
     .attr("text-anchor", "end")
     .attr("transform", "rotate(-90)")
-    .attr("y", graphXOffset/2 - 5)
+    .attr("y", graphXOffset/2 + 5)
     .attr("x", -graphYOffset-40)
     .text("Temperature(C)");
 
@@ -347,6 +347,7 @@ function stepId(mousePos){
 }
 var dragHandler = d3.drag()
     .on("drag", function (event) {
+        document.body.style.cursor='grabbing';
         let mousePos = step(event.x);
         let currId = stepId(event.x);
         if(currId>0 && currId<34)
@@ -398,7 +399,7 @@ var dragHandler = d3.drag()
         // dataTextTemp.attr("x", widthScale(data[index].x))
         //         .attr("y", heightScale(data[index].y))
         //         .text("T: " + data[index].y.toFixed(2));
-    });
+    }).on("end",()=>document.body.style.cursor='default');
 dragHandler(slider);
 
 //time axis slider control
