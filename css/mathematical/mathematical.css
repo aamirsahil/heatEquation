@@ -11,6 +11,10 @@
   }
   .expand{
     background-color: bisque;
+
+  }
+  .expand:hover{
+    cursor: pointer;
   }
   .step1,.step2,.step3,.heatEq{
     visibility: hidden;
