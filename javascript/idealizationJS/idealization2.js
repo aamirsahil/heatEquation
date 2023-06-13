@@ -1,5 +1,7 @@
 //To calculate the profile of the graph
 function u(x,t){
+    x += 0.6;
+    x /= 2;
     return Math.exp(-Math.pow(Math.PI, 2)*t)*Math.sin(Math.PI*x) +
             Math.exp(-Math.pow(2*Math.PI, 2)*t)*Math.sin(2*Math.PI*x) +
             Math.exp(-Math.pow(3*Math.PI, 2)*t)*Math.sin(3*Math.PI*x);
@@ -131,18 +133,18 @@ var drawSlider = d3.line()
 
 //line(dashed)
 var index = 0;
-var dataLine = canvas.append("g")
-        .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
-        .selectAll(".dataLine")
-        .data([[{x: data[index].x, y: 0},{x: data[index].x, y: data[index].y},{x: 0, y: data[index].y}]])
-        .enter()
-        .append("path")
-        .attr("class", "dataLine")
-        .attr("d",line)
-        .attr("fill","none")
-        .attr("stroke", "black")
-        .attr("stroke-width", 1)
-        .attr("stroke-dasharray",3);
+// var dataLine = canvas.append("g")
+//         .attr("transform","translate(" + graphXOffset + "," + graphYOffset + ")")
+//         .selectAll(".dataLine")
+//         .data([[{x: data[index].x, y: 0},{x: data[index].x, y: data[index].y},{x: 0, y: data[index].y}]])
+//         .enter()
+//         .append("path")
+//         .attr("class", "dataLine")
+//         .attr("d",line)
+//         .attr("fill","none")
+//         .attr("stroke", "black")
+//         .attr("stroke-width", 1)
+//         .attr("stroke-dasharray",3);
 
 //pointer(circle)
 // var dataPointer = canvas.append("g")
