@@ -1,5 +1,7 @@
 //To calculate the profile of the graph
 function u(x,t){
+        x += 0.6;
+        x /= 2;
         return 25*(Math.exp(-Math.pow(Math.PI, 2)*t)*Math.sin(Math.PI*x) +
                 Math.exp(-Math.pow(2*Math.PI, 2)*t)*Math.sin(2*Math.PI*x) +
                 Math.exp(-Math.pow(3*Math.PI, 2)*t)*Math.sin(3*Math.PI*x))+20;
